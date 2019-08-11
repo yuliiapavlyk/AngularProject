@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from 'src/modules/products/products.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
+import {HeaderModule} from 'src/modules/header/header.module';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +17,7 @@ import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
     AuthModule,
     DashboardModule,
     ProductsModule,
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent],
