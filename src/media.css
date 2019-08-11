@@ -1,0 +1,8 @@
+ @media (max-width: 	719px) {
+  .main-image {
+    display: none;
+  }
+  .main-form{
+    width: 100% !important;
+  }
+}
