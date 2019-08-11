@@ -1,0 +1,28 @@
+aside{
+  background: rgb(123,64,184);
+  width: 20%;
+  height: 800px;
+}
+img{
+  width: 30px;
+}
+aside a{
+  display: flex;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+  padding: 5px;
+  align-items:center;
+  font-size: 14px;
+}
+aside a:hover{
+  background: rgba(189, 166, 212, 0.781);
+}
+
+@media only screen and (max-width:700px){
+  aside{
+    width: 50%;
+    height: 200px;
+  }
+}

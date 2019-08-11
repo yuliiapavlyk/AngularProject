@@ -7,7 +7,7 @@ import { ProductsModule } from 'src/modules/products/products.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
 import {HeaderModule} from 'src/modules/header/header.module';
-import { from } from 'rxjs';
+import { SideBarModule } from 'src/modules/side-bar/side-bar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +17,8 @@ import { from } from 'rxjs';
     AuthModule,
     DashboardModule,
     ProductsModule,
-    HeaderModule
+    HeaderModule,
+    SideBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
