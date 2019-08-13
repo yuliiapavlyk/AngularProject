@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from 'src/pages/auth/login/login.component';
 import { RegisterComponent } from 'src/pages/auth/register/register.component';
 import { DashboardComponent } from 'src/pages/dashboard/dashboard.component';
+import {HeaderComponent} from 'src/pages/header/header.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+path:"",
+component:HeaderComponent
   },
   {
     path: '',
