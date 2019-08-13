@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from 'src/modules/products/products.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
-import {HeaderModule} from 'src/modules/header/header.module';
-import { SideBarModule } from 'src/modules/side-bar/side-bar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,11 +14,9 @@ import { SideBarModule } from 'src/modules/side-bar/side-bar.module';
     AppRoutingModule,
     AuthModule,
     DashboardModule,
-    ProductsModule,
-    HeaderModule,
-    SideBarModule
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
