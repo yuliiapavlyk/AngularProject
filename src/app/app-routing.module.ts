@@ -3,9 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from 'src/pages/auth/login/login.component';
 import { RegisterComponent } from 'src/pages/auth/register/register.component';
 import { DashboardComponent } from 'src/pages/dashboard/dashboard.component';
-import {HeaderComponent} from 'src/pages/header/header.component';
-import { from } from 'rxjs';
-import { SideBarComponent } from 'src/pages/side-bar/side-bar.component';
 
 const routes: Routes = [
   {
@@ -15,14 +12,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-  },
-  {
-    path:"",
-    component:SideBarComponent
-      },
-  {
-path:"",
-component:HeaderComponent
   },
   {
     path: '',
@@ -43,4 +32,4 @@ component:HeaderComponent
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
