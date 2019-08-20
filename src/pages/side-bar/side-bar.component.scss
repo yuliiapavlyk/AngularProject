@@ -2,6 +2,7 @@ aside{
   background: rgb(123,64,184);
   width: 20%;
   height: 800px;
+  margin-top: -11px;
 }
 img{
   width: 30px;
@@ -24,5 +25,10 @@ aside a:hover{
   aside{
     width: 50%;
     height: 200px;
+  }
+}
+@media only screen and (max-width:400px){
+  aside{
+    width: 100%;
   }
 }
