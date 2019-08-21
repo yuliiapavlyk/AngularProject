@@ -1,0 +1,47 @@
+@import url("../../styles.scss");
+*{
+  color:gray;
+}
+
+.main{
+  display: flex;
+  justify-content: space-around;
+}
+.input-label{
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+input[type="text"]{
+ width: 95%;
+ height: 30px;
+ border: lightgray 1px solid;
+ border-radius: 5px;
+}
+.flex-position{
+  display: flex;
+  justify-content: space-between;
+}
+.data{
+  width: 50%;
+}
+.address{
+  width: calc(100% / 3);
+}
+.bold-text{
+  font-weight: 800;
+}
+.enter-form{
+  width: 30%;
+  height: 30px;
+  border: lightgray 1px solid;
+  border-radius: 5px;
+}
+.update-button{
+  display: flex;
+  justify-content: flex-end;
+}
+button{
+  background-color:#5ec9e3;
+  color: white;
+}
