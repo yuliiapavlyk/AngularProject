@@ -1,0 +1,7 @@
+<div class="block-forms">
+  <div *ngFor='let item of forms'>
+      <app-form-item (chooseOption)="Option($event)" [FromName]="item.name" [date]="item.date"></app-form-item>
+  </div>
+  <app-add-form  (onAddForm)="addNewForm($event)"></app-add-form>
+</div>
+

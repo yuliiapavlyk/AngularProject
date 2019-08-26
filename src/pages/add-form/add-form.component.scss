@@ -1,0 +1,31 @@
+.add-form_btn{
+  color:gray;
+  background: white;
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 40px;
+  text-align: center;
+}
+.add-form{
+  background-image: url(../../assets/Screen_Shot_2019-08-18_at_20.34.33.png);
+  background-repeat: no-repeat;
+  width: 320px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0 0 15px;
+  z-index: -1;
+}
+ .add-form_btn:hover{
+   padding-top: 23px;
+   &::after{
+    content: "Add form";
+    display: flex;
+    background: gray;
+    color: white;
+    border: 5px;
+    margin-top: 25px;
+    }
+ }
