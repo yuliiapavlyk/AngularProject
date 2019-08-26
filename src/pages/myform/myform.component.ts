@@ -18,7 +18,6 @@ formName='Standard name';
 date=new Date();
 
 addNewForm(){
-  console.log("method, which add forms, works");
   this.formName=prompt('Enter name of form');
   if(this.formName!==null){
     this.forms.push({name:this.formName, date:this.date});
