@@ -1,0 +1,18 @@
+<div class="form">
+  <h3>{{FromName}}</h3>
+  <p>{{date|date :'short'}}</p>
+  <div class="form-menu">
+      <p>0 Responses</p>
+      <ul>
+        <li (click)='Option()'>&#10247;</li>
+        <div class='form-select_option' *ngIf='showFormOption'>
+            <li><button class="btn" (click)=selectOption(1)><i class="fas fa-pen"></i>Edit</button></li>
+            <li><button class="btn" (click)=selectOption(2)><i class="far fa-copy"></i>Duplicate</button></li>
+            <li><button class="btn" (click)=selectOption(3)><i class="fas fa-share-alt"></i>Share</button></li>
+            <li><button class="btn" (click)=selectOption(4)><i class="fas fa-times-circle"></i>Disable</button></li>
+            <li><button class="btn text-danger" (click)=selectOption(5)><i class="fas fa-trash"></i>Delete</button></li>
+          </div>
+      </ul>
+  </div>
+
+</div>
