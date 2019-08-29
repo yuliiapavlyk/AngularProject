@@ -31,6 +31,13 @@ const routes: Routes = [
             (m) => m.UserProfileModule
           ),
         },
+        {
+          path: 'my-forms',
+            loadChildren: () =>
+              import('src/modules/forms/forms.module').then(
+                (m) => m.FormsModule
+              ),
+            },
     ],
   },
 ];
