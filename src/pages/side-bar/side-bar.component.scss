@@ -2,10 +2,9 @@ aside{
   background: #9c68d9;
   height: 100vh;
   width: 100%;
-  margin-top: -11px;
-}
-img{
-  width: 30px;
+border: 1px solid rgb(123,64,184);
+border-left: 1px solid white;
+margin: 0;
 }
 aside a{
   display: flex;
@@ -16,11 +15,15 @@ aside a{
   padding: 5px;
   align-items:center;
   font-size: 14px;
+  font-family: sans-serif;
+  font-weight: normal;
 }
 aside a:hover{
   background: rgba(189, 166, 212, 0.781);
 }
-
+.far{
+margin: 10px;
+}
 @media only screen and (max-width:700px){
   aside{
     width: 50%;
