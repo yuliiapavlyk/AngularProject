@@ -1,5 +1,13 @@
+@import 'src/styles/variables';
+
 .flex-blocks{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.content {
+  width:80%;
+  padding: 20px;
+  background: $page-background;
 }
