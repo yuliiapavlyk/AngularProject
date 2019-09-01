@@ -1,6 +1,8 @@
+@import 'src/styles/variables';
+
 .fa-list-alt{
-  color: white;
-margin: 3px 10px 3px 0;
+  color: $white;
+  margin: 3px 10px 3px 0;
 }
 header{
     display: flex;
