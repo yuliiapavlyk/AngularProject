@@ -14,12 +14,13 @@
 }
 
 .sidebar{
-  background-image: url(http://www.pngall.com/wp-content/uploads/1/Forest-PNG-Image-File.png);
-  background-position-x: -22px;
-  background-position-y: 120px;
-  background-size: cover;
+  background-image: url("src/assets/forest.png");
+  background-position-x: -27px;
+  background-position-y: 226px;
+  background-size: 520px 500px;
   background-color: $sidebar-background;
   background-repeat: no-repeat;
   width: 20%;
+  background-attachment: fixed;
   min-width: 175px;
 }
