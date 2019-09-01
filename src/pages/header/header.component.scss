@@ -3,15 +3,15 @@
 margin: 3px 10px 3px 0;
 }
 header{
-  display: flex;
-  align-items: center;
-  border: 2px solid whitesmoke;
-  margin: 0;
+    display: flex;
+    height: 60px;
+    border-bottom: 1px solid $page-background;
 }
 .header-form{
   display: flex;
   background: rgb(134,75, 195);
   width: 20%;
+  min-width: 175px;
   justify-content: center;
   align-items: center;
 }
@@ -42,7 +42,7 @@ text-decoration: none;
 }
 @media only screen and (max-width:700px){
   .header-form{
-    width: 50%;
+    // width: 50%;
   }
   .header-link{
     width: 50%;
