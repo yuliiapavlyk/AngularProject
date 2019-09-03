@@ -1,4 +1,5 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-form',
@@ -7,13 +8,15 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class AddFormComponent implements OnInit {
 
-  @Output()onAddForm=new EventEmitter();
-addForm(){
-  this.onAddForm.emit();
-}
-  constructor() { }
+  @Output() onAddForm = new EventEmitter();
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  addForm() :void{
+    this.router.navigateByUrl('/new-form');
+    //this.onAddForm.emit();
+  }
 }

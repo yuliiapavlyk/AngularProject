@@ -38,6 +38,13 @@ const routes: Routes = [
                 (m) => m.FormsModule
               ),
             },
+            {
+              path: 'new-form',
+                loadChildren: () =>
+                  import('src/modules/new-form/new-form.module').then(
+                    (m) => m.NewFormModule
+                  ),
+                },
     ],
   },
 ];
