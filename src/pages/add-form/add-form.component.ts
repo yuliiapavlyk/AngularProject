@@ -16,7 +16,7 @@ export class AddFormComponent implements OnInit {
   }
 
   addForm() :void{
-    this.router.navigateByUrl('/new-form');
+    this.router.navigate(['new-form']);
     //this.onAddForm.emit();
   }
 }
