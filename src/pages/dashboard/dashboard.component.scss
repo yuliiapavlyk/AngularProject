@@ -1,0 +1,26 @@
+@import 'src/styles/variables';
+
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: calc(100vh - 60px);
+}
+
+.content {
+  width:80%;
+  padding: 20px;
+  background: $page-background;
+}
+
+.sidebar{
+  background-image: url("src/assets/forest.png");
+  background-position-x: -27px;
+  background-position-y: 226px;
+  background-size: 520px 500px;
+  background-color: $sidebar-background;
+  background-repeat: no-repeat;
+  width: 20%;
+  background-attachment: fixed;
+  min-width: 175px;
+}

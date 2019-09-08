@@ -1,0 +1,37 @@
+@import 'src/styles/variables';
+
+aside{
+  padding-top: 10px;
+  min-width: 175px;
+
+  & a{
+    display: flex;
+    text-transform: uppercase;
+    color: $white;
+    text-decoration: none;
+    padding: 10px 15px;
+    align-items:center;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: normal;
+
+    &:hover{
+      background: rgba(189, 166, 212, 0.781);
+    }
+  }
+}
+
+.far{
+margin: 10px;
+}
+@media only screen and (max-width:700px){
+  aside{
+    // width: 50%;
+    // height: 200px;
+  }
+}
+@media only screen and (max-width:400px){
+  aside{
+    // width: 100%;
+  }
+}
