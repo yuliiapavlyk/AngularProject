@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   users: IUser[] = [];
   currentUser: IUser;
   editedUser: IUser;
-  isNewRecord: boolean;
+  isNewRecord:   boolean;
   statusMessage: string;
 
   constructor( private usersService: UserService) { }
