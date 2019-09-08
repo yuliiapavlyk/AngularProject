@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserComponent } from 'src/pages/user/user.component';
+import { Route, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+const routes: Route[] = [
+  {
+    path: '',
+    component: UserComponent,
+  },
+];
+
+@NgModule({
+  declarations: [UserComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ]
+})
+export class UserModule { }

@@ -45,6 +45,13 @@ const routes: Routes = [
                     (m) => m.NewFormModule
                   ),
                 },
+                {
+                  path:'user',
+                  loadChildren:()=>
+                  import('src/modules/user/user.module').then(
+                    (m)=>m.UserModule
+                  )
+                }
     ],
   },
 ];
