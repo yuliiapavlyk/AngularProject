@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-new-form',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class NewFormComponent implements OnInit {
 
   constructor() { }
-
+  openModal=false;
+  addField():void{
+    console.log("new Window");
+    this.openModal=!this.openModal;
+  }
   ngOnInit() {
   }
 
