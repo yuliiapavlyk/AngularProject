@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from 'src/modules/products/products.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
-import { FormsModule } from 'src/modules/forms/forms.module';
+import { FormsModuleM } from 'src/modules/forms/forms.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { FormsModule } from 'src/modules/forms/forms.module';
     AuthModule,
     DashboardModule,
     ProductsModule,
-    FormsModule
+    FormsModuleM,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

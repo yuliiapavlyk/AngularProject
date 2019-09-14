@@ -35,7 +35,7 @@ const routes: Routes = [
           path: 'my-forms',
             loadChildren: () =>
               import('src/modules/forms/forms.module').then(
-                (m) => m.FormsModule
+                (m) => m.FormsModuleM
               ),
             },
             {
@@ -45,6 +45,13 @@ const routes: Routes = [
                     (m) => m.NewFormModule
                   ),
                 },
+                {
+                  path: 'login',
+                    loadChildren: () =>
+                      import('src/modules/auth/auth.module').then(
+                        (m) => m.AuthModule
+                      ),
+                    },
     ],
   },
 ];
