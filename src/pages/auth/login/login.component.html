@@ -26,10 +26,20 @@
             We'll never share your email with anyone else.
           </small>
             <br/>
-            <input type="password"
+            <input type="{{type}}"
              placeholder="Password"
              formControlName='password'
-             class="enter-form"><br/>
+             class="enter-form"
+             #pass>
+             <br/>
+             <label for="showPassword">
+                <input
+                (click)='ShowPassword()'
+                type="checkbox"
+                class="form-check-input"
+                id="showPassword">Show password
+            </label><br/>
+
              <ng-container *ngIf="myGroup.controls.password.touched">
               <div class="text-danger"
               *ngIf="myGroup.controls.password.errors?.required">
@@ -41,7 +51,7 @@
               </div><br/>
             <label for="remember">
                 <input type="checkbox" name = "remember">Remember me
-            </label><br/><br/><br/>
+            </label><br/>
             <button  [disabled]="myGroup.invalid"  class="enter-form bold-text">Log in</button>
          </div>
         </form>

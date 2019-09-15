@@ -9,7 +9,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+type='password';
+show = false;
   constructor(
 
   ) { }
@@ -23,6 +24,15 @@ export class LoginComponent implements OnInit {
  });
 
 onSubmit(){
-  console.log('work');
+  console.log(this.myGroup);
+}
+ShowPassword(){
+  this.show = !this.show;
+  if (this.show){
+      this.type = "text";
+  }
+  else {
+      this.type = "password";
+  }
 }
 }
