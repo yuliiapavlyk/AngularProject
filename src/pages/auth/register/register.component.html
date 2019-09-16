@@ -4,15 +4,51 @@
   </div>
   <div class="main-form">
     <div class="main-data">
-      <h1 class="bold-text">Register</h1>
-      <h3 class="color-title">Please enter your name and e-mail here for the registration.</h3><br/><br/>
+      <h2 class="bold-text">Register</h2>
+      <h5 class="color-title">Please enter your name and e-mail here for the registration.</h5><br/><br/>
         <div>
-          <input type="text" placeholder="First name" class="enter-form"><br/><br/>
-          <input type="text" placeholder="Second name" class="enter-form"><br/><br/>
-          <input type="text" placeholder="E-Mail" class="enter-form"><br/><br/>
-          <input type="password" placeholder="Your password" class="enter-form"><br/><br/>
-          <input type="password" placeholder="Confirm password" class="enter-form"><br/><br/><br/>
-          <button  class="enter-form bold-text">Register</button>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <ng-container *ngIf="loginForm.controls.firstName.touched">                
+                  <div class="text-danger" *ngIf="loginForm.controls.firstName.errors?.firstName">
+                    First name is invalid
+                  </div>
+              </ng-container>
+          <input type="text" placeholder="First name"  formControlName="firstName" class="enter-form"><br/><br/> 
+          <ng-container *ngIf="loginForm.controls.secondName.touched">              
+              <div class="text-danger" *ngIf="loginForm.controls.secondName.errors?.secondName">
+                Second name is invalid
+              </div>
+          </ng-container>         
+          <input type="text" placeholder="Second name" formControlName="secondName" class="enter-form"><br/><br/>
+          <ng-container *ngIf="loginForm.controls.email.touched">
+              <div class="text-danger"
+              *ngIf="loginForm.controls.email.errors?.required">
+                Email is required
+              </div>
+              <div class="text-danger" *ngIf="loginForm.controls.email.errors?.email">
+                Email is invalid
+              </div>
+            </ng-container>
+          <input type="text" placeholder="E-Mail" formControlName="email" class="enter-form"><br/><br/>
+          <ng-container *ngIf="loginForm.controls.password.touched">
+              <div class="text-danger"
+              *ngIf="loginForm.controls.password.errors?.required">
+                Password is required
+              </div>
+              <div class="text-danger" *ngIf="loginForm.controls.password.errors?.password">
+                Password is invalid
+              </div>
+            </ng-container>
+          <input type="password" placeholder="Your password" formControlName="password" class="enter-form"><br/><br/> 
+          <ng-container *ngIf="loginForm.controls.confirm.touched">
+              <div class="text-danger"
+              *ngIf="confirmPassword">
+                Enter the correct password
+              </div>             
+            </ng-container>
+          <input type="password" placeholder="Confirm password"  formControlName="confirm" class="enter-form"><br/><br/><br/>
+          <button  class="enter-form bold-text" [disabled]="loginForm.invalid"  >Register</button>  
+        </form>     
        </div>
     </div>
   </div>
