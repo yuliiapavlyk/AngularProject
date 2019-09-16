@@ -1,16 +1,3 @@
-<div class="navigation">
-    <div>
-      <button class="color-violet" (click)="addField()"><i class="fas fa-plus"></i> ADD NEW FIELD</button>
-    </div>
-
-    <div>
-        <button class="color-violet">SAVE</button>
-    </div>
-    <div>
-        <button class ="color-green">SHARE</button>
-    </div>
-</div>
-
 <div class="add-field" *ngIf='openModal'>
   <form>
     <div class="form-head">
@@ -50,4 +37,17 @@
     <button class="btn-save">Save</button>
   </div>
   </form>
+
+</div><br/>
+<div class="general-configs">
+        <div >
+            <label for="title" class="input-label">Title             
+            </label><br/>
+            <input type="text" placeholder="form name" name="title" class="enter-form">
+        </div><br/>
+        <div class="data">
+            <label for="styles" class="input-label">CSS Styles                
+            </label><br/>
+            <textarea placeholder="styles for form" name="styles" class="enter-form"></textarea>
+  </div>
 </div>
