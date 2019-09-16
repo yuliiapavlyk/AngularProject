@@ -16,6 +16,11 @@ export class TokenInterceptorService implements HttpInterceptor{
         Authorization: `Barber ${userService.getToken()}`
       }
     })
-    return next.handle(tokenizedReq)
+    if(tokenizedReq){
+      return next.handle(tokenizedReq)
+    }
+    else{
+      return null;
+    }
   }
 }

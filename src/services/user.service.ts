@@ -17,4 +17,7 @@ logIn(user){
 getToken(){
   return localStorage.getItem('accessToken');
 }
+logOut(){
+return localStorage.clear();
+}
 }

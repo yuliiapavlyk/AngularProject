@@ -40,11 +40,5 @@ onSubmit(){
 }
 ShowPassword(){
   this.show = !this.show;
-  if (this.show){
-      this.type = "text";
-  }
-  else {
-      this.type = "password";
-  }
 }
 }
