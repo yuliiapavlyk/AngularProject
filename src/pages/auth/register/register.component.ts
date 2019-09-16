@@ -9,30 +9,31 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@ang
 })
 export class RegisterComponent implements OnInit {
 
-  
-  loginForm: FormGroup;
-  confirmPassword:boolean = false;
+
+  registerForm: FormGroup;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.loginForm = this.fb.group({
-      firstName: ['', Validators.required],      
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
       secondName: ['', Validators.required],
       email: ['', Validators.compose([Validators.email, Validators.required]) ],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      confirm: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-    });
+      confirm: ['']},
+      {validator: this.checkPasswords });
 
   }
 
   onSubmit(){
-    if(this.loginForm.value.password == this.loginForm.value.confirm){      
-      console.log(this.loginForm);      
+      console.log(this.registerForm);
    //send data  via service
-    }
-    else {
-      this.confirmPassword = true;
-    }
+
+  }
+
+   checkPasswords(registerForm: FormGroup): any {
+    let password = registerForm.get('password').value;
+    let confirmPassword = registerForm.get('confirm').value;
+    return password === confirmPassword ? null : { notSame: true }
   }
 
 }
