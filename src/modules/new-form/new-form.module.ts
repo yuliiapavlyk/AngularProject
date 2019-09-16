@@ -13,5 +13,8 @@ const routes: Route[] = [
 @NgModule({
   declarations: [NewFormComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
+
 })
-export class NewFormModule { }
+export class NewFormModule {
+
+ }

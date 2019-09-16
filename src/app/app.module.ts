@@ -8,7 +8,6 @@ import { AuthModule } from 'src/modules/auth/auth.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
 import { FormsModule } from 'src/modules/forms/forms.module';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,9 +16,10 @@ import { FormsModule } from 'src/modules/forms/forms.module';
     AuthModule,
     DashboardModule,
     ProductsModule,
-    FormsModule
+    FormsModule,
+    BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
