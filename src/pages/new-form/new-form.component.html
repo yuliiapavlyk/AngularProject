@@ -1,12 +1,53 @@
-<div class="navigation">
-    <div>
-      <button class="color-violet"><i class="fas fa-plus"></i> ADD NEW FIELD</button>
+<div class="add-field" *ngIf='openModal'>
+  <form>
+    <div class="form-head">
+        <h2>New Filed</h2>
+        <button class="btn-close" (click)="addField()"><i class="fas fa-times"></i></button>
     </div>
-    
-    <div>
-        <button class="color-violet">SAVE</button>
-    </div>
-    <div>
-        <button class ="color-green">SHARE</button>
-    </div>
+    <div class='form-input'>
+      <label>Name</label>
+      <input class="form-control" type="text">
+  </div>
+  <div class='form-input'>
+    <label>Pattern</label>
+    <input class="form-control" type="text">
+  </div>
+  <div class='form-input'>
+      <label>Type</label>
+      <select class="form-control">
+        <option value="" selected disabled hidden>Choose here</option>
+        <option value="button">button</option>
+        <option value="checkbox">checkbox	</option>
+        <option value="file">file</option>
+        <option value="password">password</option>
+        <option value="radio">radio</option>
+        <option value="text">text</option>
+      </select>
+  </div>
+  <div class='form-input'>
+    <label>Placeholder</label>
+    <input class="form-control" type="text">
+  </div>
+  <div class='form-required'>
+    <input type="checkbox">
+    <label>Required</label>
+  </div>
+  <div class="form-btn">
+    <button class="btn-close_gray" (click)="addField()">Close</button>
+    <button class="btn-save">Save</button>
+  </div>
+  </form>
+
+</div><br/>
+<div class="general-configs">
+        <div >
+            <label for="title" class="input-label">Title             
+            </label><br/>
+            <input type="text" placeholder="form name" name="title" class="enter-form">
+        </div><br/>
+        <div class="data">
+            <label for="styles" class="input-label">CSS Styles                
+            </label><br/>
+            <textarea placeholder="styles for form" name="styles" class="enter-form"></textarea>
+  </div>
 </div>
