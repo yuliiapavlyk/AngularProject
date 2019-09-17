@@ -6,7 +6,11 @@ import { AppComponent } from './app.component';
 import { ProductsModule } from 'src/modules/products/products.module';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
-import { FormsModule } from 'src/modules/forms/forms.module';
+import { FormsModuleM } from 'src/modules/forms/forms.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule,   HTTP_INTERCEPTORS}   from '@angular/common/http';
+import { TokenInterceptorService } from 'src/services/token-interceptor.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,10 +20,16 @@ import { FormsModule } from 'src/modules/forms/forms.module';
     AuthModule,
     DashboardModule,
     ProductsModule,
+    FormsModuleM,
     FormsModule,
-    BrowserModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [TokenInterceptorService, {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
