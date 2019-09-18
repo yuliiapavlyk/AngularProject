@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 type='password';
 show = false;
-accessToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQG1haWwuY29tIiwiaWF0IjoxNTY4NTY5MTg3LCJleHAiOjE1Njg2NTU1ODd9.CLo_uHV9kncr5YAXliP_H8r6h4JpA0SYBOjMNUiJSKE";
+error:string;
 
   constructor(private userServ:UserService, private _rout:Router) { }
 
@@ -27,15 +27,18 @@ accessToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQG1haWwuY2
  });
 
 onSubmit(){
-  const valueForm=this.myGroup.value;
-  this.userServ.logIn({email:valueForm.email,
-      password:valueForm.password}).subscribe(
+  const { value }=this.myGroup;
+  this.userServ.logIn({email:value.email,
+      password:value.password}).subscribe(
             res=>{
-              console.log(res);
-              localStorage.setItem('accessToken', this.accessToken);
+              localStorage.setItem("accessToken", 'token');
               this._rout.navigate(['/my-forms']);
+              console.log(res);
             },
-            err=>console.log(err)
+            err=>{
+              console.log(err);
+              this.error=err.message;
+            }
             )
 }
 ShowPassword(){
