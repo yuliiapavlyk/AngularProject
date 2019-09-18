@@ -11,3 +11,10 @@ postalCode:	string,
 aboutMe:	string,
 role:	string
 }
+
+export interface IRegisterInfo{
+  firstName:string,
+  lastName:string,
+  email:string,
+  password:string
+}

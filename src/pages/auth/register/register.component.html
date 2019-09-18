@@ -14,12 +14,12 @@
                   </div>
               </ng-container>
           <input type="text" placeholder="First name"  formControlName="firstName" class="enter-form"><br/><br/>
-          <ng-container *ngIf="registerForm.controls.secondName.touched">
-              <div class="text-danger" *ngIf="registerForm.controls.secondName.errors?.secondName">
-                Second name is invalid
+          <ng-container *ngIf="registerForm.controls.lastName.touched">
+              <div class="text-danger" *ngIf="registerForm.controls.lastName.errors?.lastName">
+                Last name is invalid
               </div>
           </ng-container>
-          <input type="text" placeholder="Second name" formControlName="secondName" class="enter-form"><br/><br/>
+          <input type="text" placeholder="Last name" formControlName="lastName" class="enter-form"><br/><br/>
           <ng-container *ngIf="registerForm.controls.email.touched">
               <div class="text-danger"
               *ngIf="registerForm.controls.email.errors?.required">
