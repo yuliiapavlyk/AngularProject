@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private http:HttpClient) {
   }
-logIn(user):Observable<any>{
+logIn(user):Observable<{accessToken:string}>{
   return this.http.post<{accessToken:string}>(`${this.API_URL}/signin`, user)
 }
 getToken(){
