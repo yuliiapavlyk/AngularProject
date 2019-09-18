@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { Route } from '@angular/router';
+
 import { LoginComponent } from 'src/pages/auth/login/login.component';
 import { RegisterComponent } from 'src/pages/auth/register/register.component';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { RouterModule, Route } from '@angular/router';
 
 const routes: Route[] = [
   {
@@ -11,7 +12,6 @@ const routes: Route[] = [
     component: LoginComponent,
   },
 ];
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
