@@ -1,10 +1,12 @@
 <div class="content">
   <h2>Edit Profile</h2>
-  <form [formGroup]="registerForm"
+  <form [formGroup]="updateForm"
   (ngSubmit)="onSubmit()">
   <div>
     <label for="email" class="input-label">Email address
-      <input type="text" placeholder="Email" name="email">
+      <input type="text"
+      placeholder="Email"
+      formControlName="email">
     </label>
   </div>
 
@@ -13,14 +15,14 @@
       <label for="firstName" class="input-label">First name
         <input type="text"
         placeholder="Company"
-        name="firstName">
+        formControlName="firstName">
       </label>
     </div>
     <div class="data">
       <label for="secondName" class="input-label">Last name
         <input type="text"
         placeholder="Last name"
-        name="secondName">
+        formControlName="secondName">
       </label>
     </div>
   </div>
@@ -29,7 +31,7 @@
   <label for="address" class="input-label">Address
     <input type="text"
     placeholder="Home address"
-    name="address">
+    formControlName="address">
   </label>
 
   <div class="flex-position">
@@ -37,21 +39,21 @@
       <label for="city" class="input-label">City
         <input type="text"
         placeholder="City"
-        name="city">
+        formControlName="city">
       </label>
     </div>
     <div class="address">
       <label for="country" class="input-label">Country
         <input type="text"
         placeholder="Country"
-        name="country">
+        formControlName="country">
       </label>
     </div>
     <div class="address">
-      <label for="zipCode" class="input-label">Postal code
+      <label for="postalCode" class="input-label">Postal code
         <input type="text"
         placeholder="ZIP code"
-        name="zipCode">
+        formControlName="postalCode">
       </label>
     </div>
   </div>
@@ -59,7 +61,7 @@
   <label for="description" class="input-label">About me
     <input type="text"
     placeholder="Here can be your description"
-    name="description">
+    formControlName="aboutMe">
   </label>
   <div class="update-button">
     <button class="bold-text">Update</button>
