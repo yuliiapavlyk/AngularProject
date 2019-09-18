@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
   }
 
    checkPasswords(registerForm: FormGroup): any {
-    let password = registerForm.get('password').value;
-    let confirmPassword = registerForm.get('confirm').value;
+    const password = registerForm.get('password').value;
+    const confirmPassword = registerForm.get('confirm').value;
     return password === confirmPassword ? null : { notSame: true }
   }
 
