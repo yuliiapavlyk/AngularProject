@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http:HttpClient) {
   }
 logIn(user):Observable<any>{
-  return this.http.post<any>(`${this.API_URL}/signin`, user)
+  return this.http.post<{accessToken:string}>(`${this.API_URL}/signin`, user)
 }
 getToken(){
   return localStorage.getItem('accessToken');

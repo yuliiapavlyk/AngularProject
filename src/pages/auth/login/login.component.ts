@@ -31,7 +31,7 @@ onSubmit(){
   this.userServ.logIn({email:value.email,
       password:value.password}).subscribe(
             res=>{
-              localStorage.setItem("accessToken", 'token');
+              localStorage.setItem("accessToken", res.accessToken);
               this._rout.navigate(['/my-forms']);
             },
             err=>{
