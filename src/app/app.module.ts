@@ -18,7 +18,7 @@ import { FormsModule } from 'src/modules/forms/forms.module';
     DashboardModule,
     ProductsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     BrowserModule
   ],
   providers: [],
