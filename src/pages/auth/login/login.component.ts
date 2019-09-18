@@ -33,10 +33,8 @@ onSubmit(){
             res=>{
               localStorage.setItem("accessToken", 'token');
               this._rout.navigate(['/my-forms']);
-              console.log(res);
             },
             err=>{
-              console.log(err);
               this.error=err.message;
             }
             )
