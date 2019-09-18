@@ -6,17 +6,55 @@
     <div class="main-data">
       <h1 class="bold-text">Log in</h1>
       <h3 class="color-title">If you don't have an account yet, please <a href="#" class="color-blue">register</a> first.</h3><br/><br/>
-        <div>
-          <input type="text" placeholder="Email" class="enter-form"><br/><br/>
-          <input type="password" placeholder="Password" class="enter-form"><br/>
-            <div class ="forgot-password">
-              <a href="#">I forgot my password</a>
-            </div><br/>
-          <label for="remember">
-              <input type="checkbox" name = "remember">Remember me
-          </label><br/><br/><br/>
-          <button  class="enter-form bold-text">Log in</button>
-       </div>
+        <form [formGroup]="myGroup" (ngSubmit)="onSubmit()">
+          <div>
+            <input type="text" placeholder="Email"
+            formControlName='email'
+            class="enter-form"><br/>
+            <ng-container *ngIf="myGroup.controls.email.touched">
+              <div class="text-danger"
+              *ngIf="myGroup.controls.email.errors?.required">
+                Email is required
+              </div>
+              <div class="text-danger" *ngIf="myGroup.controls.email.errors?.email">
+                Email is invalid
+              </div>
+            </ng-container>
+          <small
+           id="emailHelp"
+           class="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small>
+            <br/>
+            <input type="{{show ? 'text' : 'password'}}"
+             placeholder="Password"
+             formControlName='password'
+             class="enter-form"
+             #pass>
+             <br/>
+             <label for="showPassword">
+                <input
+                (click)='ShowPassword()'
+                type="checkbox"
+                class="form-check-input"
+                id="showPassword">Show password
+            </label><br/>
+
+             <ng-container *ngIf="myGroup.controls.password.touched">
+              <div class="text-danger"
+              *ngIf="myGroup.controls.password.errors?.required">
+                Password is required
+              </div>
+            </ng-container>
+              <div class ="forgot-password">
+                <a href="#">I forgot my password</a>
+              </div><br/>
+            <label for="remember">
+                <input type="checkbox" name = "remember">Remember me
+            </label><br/>
+            <button  [disabled]="myGroup.invalid"  class="enter-form bold-text">Log in</button>
+         </div>
+        </form>
     </div>
   </div>
 </div>
