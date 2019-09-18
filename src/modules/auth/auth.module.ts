@@ -15,8 +15,10 @@ const routes: Route[] = [
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     FormsModule,
-    ReactiveFormsModule]
+    ReactiveFormsModule
+  ]
 })
 export class AuthModule {}
