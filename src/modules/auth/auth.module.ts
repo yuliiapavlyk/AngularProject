@@ -11,6 +11,7 @@ const routes: Route[] = [
     component: LoginComponent,
   },
 ];
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
