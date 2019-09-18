@@ -1,5 +1,5 @@
 export interface IUser{
-  id:	number,
+id:	number,
 email:	string,
 password:	string,
 firstName:	string,
@@ -10,4 +10,11 @@ city:	string,
 postalCode:	string,
 aboutMe:	string,
 role:	string
+}
+
+export interface IRegisterInfo{
+  firstName:string,
+  lastName:string,
+  email:string,
+  password:string
 }
