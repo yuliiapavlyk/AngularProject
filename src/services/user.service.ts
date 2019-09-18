@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import * as env from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import {IUser, IRegisterInfo} from "src/interfaces/user"
+import {IUser, IRegisterInfo} from "src/interfaces/user";
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,7 @@ logOut(){
 return localStorage.clear();
 }
 
-registerUser(user: IRegisterInfo) {
-  const body: IRegisterInfo = {
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    password: user.password
-  };
-  return this.http.post(`${this.API_URL}/signup`, body);
+registerUser(user: IRegisterInfo): Observable<any>{
+  return this.http.post(`${this.API_URL}/signup`, user);
 }
 }

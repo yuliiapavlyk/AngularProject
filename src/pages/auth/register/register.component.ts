@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { IRegisterInfo } from '../../../interfaces/user';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,10 +14,10 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  errorMessage:string = "";
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private router:Router) { }
+              private router:Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -37,15 +38,12 @@ export class RegisterComponent implements OnInit {
    }
    this.userService.registerUser(userInfo).subscribe(
     res=>{
+      this.toastr.success('Welcome to creator forms!');
       this.router.navigate(['/login']);
     },
     err=>{
-      this.errorMessage = err.message;
+      this.toastr.error('Try register one more time');
     });
-    if(this.errorMessage != ""){
-      alert("Try register one more time!");
-    }
-
   }
 
    checkPasswords(registerForm: FormGroup): any {
