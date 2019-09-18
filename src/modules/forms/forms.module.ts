@@ -27,4 +27,4 @@ const routes: Route[] = [
   ],
   exports:[FormItemComponent, AddFormComponent, TopSectionComponent]
 })
-export class FormsModule { }
+export class FormsModuleM { }
