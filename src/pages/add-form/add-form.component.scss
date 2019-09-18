@@ -8,14 +8,15 @@
   text-align: center;
 }
 .add-form{
-  background-image: url(../../assets/Screen_Shot_2019-08-18_at_20.34.33.png);
+  background-image: url(../../assets/new.jpg);
   background-repeat: no-repeat;
-  width: 320px;
-  height: 250px;
+  width: 310px;
+  height: 230px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 25px 0 0 15px;
+  margin: 25px 15px 15px;
   z-index: -1;
 }
  .add-form_btn:hover{

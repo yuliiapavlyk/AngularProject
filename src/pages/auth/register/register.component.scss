@@ -11,7 +11,8 @@
 }
 .main {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  min-height: 100vh;
 }
 .main-image{
   width: 65%;
@@ -37,6 +38,7 @@ button{
   height: 45px;
   border: lightgray 1px solid;
   border-radius: 5px;
+  padding: 10px;
 }
 .color-blue{
  color: var(--main-color);
