@@ -11,7 +11,7 @@ export class NewFormComponent implements OnInit {
   openModal=false;
   addField():void{
     console.log("new Window");
-    this.openModal=!this.openModal;
+    //service method
   }
   ngOnInit() {
   }
