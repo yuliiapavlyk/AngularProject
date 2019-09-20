@@ -1,24 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
 
-  constructor() { }
-  forms=[
-    {
-      name:'First form',
-      date:new Date(2011, 0, 1, 0, 0, 0, 0)
+  constructor(private htpp:HttpClient) { }
 
-    },
-    {
-      name:'Second form',
-      date:new Date(2017, 7, 5, 0, 0, 0, 0)
-    },
-    {
-      name:'Third form',
-      date:new Date(2019, 8, 8, 0, 0, 0, 0)
-    }
-  ]
+  // getForm():Observable<>
 }

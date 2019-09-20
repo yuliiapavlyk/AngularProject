@@ -9,20 +9,15 @@ import{FormService} from '../../services/form.service'
 })
 export class MyformComponent implements OnInit {
 
-  constructor(private formSrvc: FormService) { }
-  forms=[];
+  constructor() { }
   ngOnInit() {
-    this.forms=this.formSrvc.forms;
+
   }
 formName='Standard name';
 date=new Date();
 
 addNewForm(){
-  console.log("method, which add forms, works");
-  this.formName=prompt('Enter name of form');
-  if(this.formName!==null){
-    this.forms.push({name:this.formName, date:this.date});
-  }
+
 }
 
 Option(value:number){

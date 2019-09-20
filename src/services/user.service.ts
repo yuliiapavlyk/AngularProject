@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http:HttpClient) {
   }
 logIn(user){
-  return this.http.post(`${this.API_URL}/signin`, user)
+  return this.http.post(`${this.API_URL}/signIn`, user)
 }
 getToken(){
   return localStorage.getItem('accessToken');
