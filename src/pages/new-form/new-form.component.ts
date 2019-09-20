@@ -8,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class NewFormComponent implements OnInit {
 
   constructor() { }
-
+  openModal=false;
+  addField():void{
+    console.log("new Window");
+    //service method
+  }
   ngOnInit() {
   }
 

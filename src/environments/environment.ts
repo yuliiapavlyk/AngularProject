@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  LOGIN_URL:'http://localhost:3000/auth'
+  LOGIN_URL:'http://localhost:3000/auth',
+  FORMS_URL:'http://localhost:3000'
 };
 
 /*

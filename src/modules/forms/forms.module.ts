@@ -8,6 +8,8 @@ import { AddFormModule } from '../add-form/add-form.module';
 import { AddFormComponent } from 'src/pages/add-form/add-form.component';
 import { TopSectionModule } from '../top-section/top-section.module';
 import { TopSectionComponent } from 'src/pages/top-section/top-section.component';
+import { StoreModule } from '@ngrx/store';
+import { formReducer } from 'src/store/reducers/form.reducer';
 
 
 const routes: Route[] = [
@@ -23,7 +25,8 @@ const routes: Route[] = [
     FormItemModule,
     AddFormModule,
     TopSectionModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('forms', formReducer)
   ],
   exports:[FormItemComponent, AddFormComponent, TopSectionComponent]
 })

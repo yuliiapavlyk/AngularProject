@@ -1,8 +1,56 @@
 <div class="navigation">
     <div>
-      <button class="color-violet"><i class="fas fa-plus"></i> ADD NEW FIELD</button>
+      <button class="color-violet"  data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i> ADD NEW FIELD</button>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">New field</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>               
+                  <div class='form-input'>
+                    <label>Name</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class='form-input'>
+                  <label>Pattern</label>
+                  <input class="form-control" type="text">
+                </div>
+                <div class='form-input'>
+                    <label>Type</label>
+                    <select class="form-control">
+                      <option value="" selected disabled hidden>Choose here</option>
+                      <option value="button">button</option>
+                      <option value="checkbox">checkbox	</option>
+                      <option value="file">file</option>
+                      <option value="password">password</option>
+                      <option value="radio">radio</option>
+                      <option value="text">text</option>
+                    </select>
+                </div>
+                <div class='form-input'>
+                  <label>Placeholder</label>
+                  <input class="form-control" type="text">
+                </div>
+                <div class='form-required'>
+                  <input type="checkbox">
+                  <label>Required</label>
+                </div>              
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addField()">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-    
+
     <div>
         <button class="color-violet">SAVE</button>
     </div>
@@ -10,3 +58,17 @@
         <button class ="color-green">SHARE</button>
     </div>
 </div>
+
+<div class="general-configs">
+        <div >
+            <label for="title" class="input-label">Title             
+            </label><br/>
+            <input type="text" placeholder="form name" name="title" class="enter-form">
+        </div><br/>
+        <div class="data">
+            <label for="styles" class="input-label">CSS Styles                
+            </label><br/>
+            <textarea placeholder="styles for form" name="styles" class="enter-form"></textarea>
+  </div>
+</div>
+

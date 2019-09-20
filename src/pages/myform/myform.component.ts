@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{FormService} from '../../services/form.service'
+import { Form } from '@angular/forms';
+import { IForm } from 'src/interfaces/myform.model';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-myform',
@@ -8,13 +11,24 @@ import{FormService} from '../../services/form.service'
   providers:[FormService]
 })
 export class MyformComponent implements OnInit {
-
-  constructor() { }
+// form:IForm[]=[];
+forms;
+  constructor(private formService:FormService, private store:Store<any>) {}
   ngOnInit() {
-
+    this.store.dispatch({type:'LOAD_FORMS'})
+    this.store.subscribe(state=>(this.forms=state.forms.forms))
   }
-formName='Standard name';
-date=new Date();
+
+  // private getForms(param = {}) {
+  //   this.formService.getForm(param)
+  //   .subscribe((res) => {
+  //     this.form= res;
+  //     console.log(res);
+  //   },
+  //   err => {
+  //     console.log(err);
+  //   });
+  //  }
 
 addNewForm(){
 
