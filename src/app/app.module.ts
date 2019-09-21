@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from "@ngrx/effects";
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([]),
+    HttpClientModule
   ],
   providers: [TokenInterceptorService, {
     provide:HTTP_INTERCEPTORS,

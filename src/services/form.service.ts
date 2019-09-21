@@ -11,8 +11,26 @@ export class FormService {
 
   constructor(private http:HttpClient) { }
 
-  private APi_URL=env.environment.FORMS_URL;
-  public  getForm(param):Observable<IForm[]>{
-    return this.http.get<IForm[]>(`${this.APi_URL}/forms`,{params: param});
+  private API_URL=env.environment.FORMS_URL;
+  public  getForm():Observable<IForm[]>{
+    return this.http.get<IForm[]>(`${this.API_URL}/forms`);
+  }
+
+  getFormById(payload: string):Observable<IForm> {
+    return this.http.get<IForm>(`${this.API_URL}/forms/${payload}`);
+  }
+
+  createForm(payload: IForm): Observable<IForm> {
+    return this.http.post<IForm>(`${this.API_URL}/forms`, payload);
+  }
+
+  updateForm(form: IForm): Observable<IForm> {
+    return this.http.patch<IForm>(
+      `${this.API_URL}/forms/${form.id}`,form
+    );
+  }
+
+  deleteForm(payload: number) {
+    return this.http.delete(`${this.API_URL}/forms/${payload}`);
   }
 }

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import{FormService} from '../../services/form.service'
 import { Form } from '@angular/forms';
 import { IForm } from 'src/interfaces/myform.model';
-import {Store} from '@ngrx/store';
+import {Store, select} from '@ngrx/store';
+import * as formActions from '../../store/actions/myform.action';
+import { Observable } from "rxjs";
+import * as fromForms from "../../store/reducers/form.reducer";
+
 
 @Component({
   selector: 'app-myform',
@@ -11,12 +15,11 @@ import {Store} from '@ngrx/store';
   providers:[FormService]
 })
 export class MyformComponent implements OnInit {
-// form:IForm[]=[];
-forms;
-  constructor(private formService:FormService, private store:Store<any>) {}
+forms$:Observable<IForm[]>;
+  constructor(private formService:FormService, private store:Store<fromForms.AppState>) {}
   ngOnInit() {
-    this.store.dispatch({type:'LOAD_FORMS'})
-    this.store.subscribe(state=>(this.forms=state.forms.forms))
+    this.store.dispatch(new formActions.LoadForms())
+   this.forms$=this.store.pipe(select(fromForms.getForms))
   }
 
   // private getForms(param = {}) {
