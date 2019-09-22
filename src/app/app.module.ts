@@ -11,6 +11,8 @@ import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
 import { FormsModuleM } from 'src/modules/forms/forms.module';
 import { TokenInterceptorService } from 'src/services/token-interceptor.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [TokenInterceptorService, {
     provide:HTTP_INTERCEPTORS,
