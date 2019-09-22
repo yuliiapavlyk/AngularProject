@@ -16,7 +16,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from "@ngrx/effects";
-import { FormDetailsModule } from 'src/modules/form-details/form-details.module';
 
 
 @NgModule({
@@ -39,7 +38,6 @@ import { FormDetailsModule } from 'src/modules/form-details/form-details.module'
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([]),
     HttpClientModule,
-    FormDetailsModule
   ],
   providers: [TokenInterceptorService, {
     provide:HTTP_INTERCEPTORS,
