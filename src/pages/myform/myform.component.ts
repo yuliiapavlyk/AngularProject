@@ -6,6 +6,8 @@ import {Store, select} from '@ngrx/store';
 import * as formActions from '../../store/actions/myform.action';
 import { Observable } from "rxjs";
 import * as fromForms from "../../store/reducers/form.reducer";
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -16,22 +18,16 @@ import * as fromForms from "../../store/reducers/form.reducer";
 })
 export class MyformComponent implements OnInit {
 forms$:Observable<IForm[]>;
-  constructor(private formService:FormService, private store:Store<fromForms.AppState>) {}
+  constructor(private formService:FormService, private store:Store<fromForms.AppState>,
+    private router:Router) {}
   ngOnInit() {
     this.store.dispatch(new formActions.LoadForms())
-   this.forms$=this.store.pipe(select(fromForms.getForms))
+    this.forms$=this.store.pipe(select(fromForms.getForms))
   }
 
-  // private getForms(param = {}) {
-  //   this.formService.getForm(param)
-  //   .subscribe((res) => {
-  //     this.form= res;
-  //     console.log(res);
-  //   },
-  //   err => {
-  //     console.log(err);
-  //   });
-  //  }
+  formDetail(form:IForm){
+    this.router.navigate(['form-details']);
+  }
 
 addNewForm(){
 
@@ -40,7 +36,10 @@ addNewForm(){
 Option(value:number){
   switch(value){
     case 1:
-      //to do
+      // let form:IForm;
+      // this.router.navigate(['form-details']);
+      //  console.log(this.store.dispatch(new formActions.LoadForm(form.name)));
+      //  this.store.dispatch(new formActions.LoadForm(form.name));
       break;
     case 2:
       //to do

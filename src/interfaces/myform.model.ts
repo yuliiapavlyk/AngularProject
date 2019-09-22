@@ -2,9 +2,9 @@ import { IUser } from "./user";
 
 export interface IForm {
 name: string,
-id:number,
-backgroung: string,
-fields: [
+id?:number,
+background: string,
+fields?: [
   {
     placeholder: string,
     pattern: number,

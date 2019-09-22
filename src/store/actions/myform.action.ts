@@ -1,7 +1,6 @@
 import {Action} from '@ngrx/store';
 import { IForm } from 'src/interfaces/myform.model';
 import { Update } from "@ngrx/entity";
-import { UpdateNum } from '@ngrx/entity/src/models';
 
 
 export enum FormActionType {
@@ -41,7 +40,7 @@ export class LoadFormsFail implements Action{
 
 export class LoadForm implements Action{
   readonly type = FormActionType.LOAD_FORM
-  constructor(public payload:string){
+  constructor(public payload:number){
 
   }
 }

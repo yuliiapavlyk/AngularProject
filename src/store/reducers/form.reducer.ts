@@ -36,10 +36,11 @@ export function formReducer(state=initialState, action:formAction.Action):FormsS
       };
     }
     case formAction.FormActionType.LOAD_FORMS_SUCCESS:{
+
       return formAdapter.addAll(action.payload,{
         ...state,
         loading:false,
-        loaded:true
+        loaded:true,
       })
     }
     case formAction.FormActionType.LOAD_FORMS_FAIL:{

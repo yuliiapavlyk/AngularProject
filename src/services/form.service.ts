@@ -16,7 +16,7 @@ export class FormService {
     return this.http.get<IForm[]>(`${this.API_URL}/forms`);
   }
 
-  getFormById(payload: string):Observable<IForm> {
+  getFormById(payload: number):Observable<IForm> {
     return this.http.get<IForm>(`${this.API_URL}/forms/${payload}`);
   }
 
