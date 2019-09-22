@@ -11,7 +11,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>               
+                <form>
                   <div class='form-input'>
                     <label>Name</label>
                     <input class="form-control" type="text">
@@ -39,12 +39,12 @@
                 <div class='form-required'>
                   <input type="checkbox">
                   <label>Required</label>
-                </div>              
+                </div>
                 </form>
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="addField()">Save changes</button>
+                <button type="button"  data-dismiss="modal"  class="btn btn-primary" (click)="addField()">Save changes</button>
               </div>
             </div>
           </div>
@@ -61,12 +61,12 @@
 
 <div class="general-configs">
         <div >
-            <label for="title" class="input-label">Title             
+            <label for="title" class="input-label">Title
             </label><br/>
             <input type="text" placeholder="form name" name="title" class="enter-form">
         </div><br/>
         <div class="data">
-            <label for="styles" class="input-label">CSS Styles                
+            <label for="styles" class="input-label">CSS Styles
             </label><br/>
             <textarea placeholder="styles for form" name="styles" class="enter-form"></textarea>
   </div>
