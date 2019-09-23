@@ -25,7 +25,7 @@ export class FormService {
   }
 
   updateForm(form: IForm): Observable<IForm> {
-    return this.http.patch<IForm>(
+    return this.http.put<IForm>(
       `${this.API_URL}/forms/${form.id}`,form
     );
   }
