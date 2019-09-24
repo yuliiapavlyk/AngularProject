@@ -3,7 +3,6 @@
         <thead>
           <tr class="table-primary">
             <th scope="col">Name</th>
-            <th scope="col">Id</th>
             <th scope="col">Background</th>
             <!-- <th scope="col">Fields</th> -->
             <th></th>
@@ -16,31 +15,43 @@
           <tr>
           <tr *ngFor="let item of (forms$ |async)">
             <th  scope="row">{{item.name}}</th>
-            <td >{{item.id}}</td>
             <td >{{item.background}}</td>
-            <!-- <td>{{item.fields}}</td> -->
             <th>
-              <a (click)='editForm(item)'>edit</a>
+              <button (click)='editForm(item)' class="btn btn-info">Edit</button>
               <br>
-              <a (click)='deleteForm()'>delete</a>
+              <button (click)='deleteForm(item)' class="btn btn-danger">Delete</button>
             </th>
           </tr>
         </tbody>
       </table>
-
+<div class="edit-form" *ngIf='editForms'>
   <form [formGroup]='formDetails' (ngSubmit)='updateForm()'>
     <div>
       <label>Name</label>
       <input class="form-control" type="text" formControlName='name'>
     </div>
     <div>
-      <label>background</label>
-      <input class='form-control' type="text" formControlName='background'>
+      <label>Background</label>
+      <select class='form-control' formControlName='background'>
+        <option>#FFFFFF</option>
+        <option>#C0C0C0</option>
+        <option>#808080</option>
+        <option>#000000</option>
+        <option>#FF0000</option>
+        <option>#800000</option>
+        <option>#FFFF00</option>
+        <option>#808000</option>
+        <option>#00FF00</option>
+        <option>#008000</option>
+        <option>#00FFFF</option>
+        <option>#008080</option>
+        <option>#0000FF</option>
+        <option>#000080</option>
+        <option>#FF00FF</option>
+        <option>#800080</option>
+      </select>
     </div>
-    <div>
-      <label>id</label>
-      <input type="text" class="form-control" formControlName='id'>
-    </div>
-    <button type="submit" class="btn btn-primary">Edit form</button>
+    <button type="submit" [disabled]="formDetails.invalid" class="btn btn-primary">Edit form</button>
   </form>
+</div>
 </div>

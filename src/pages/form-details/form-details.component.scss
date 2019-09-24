@@ -1,0 +1,69 @@
+option{
+  background: red;
+}
+
+$colour1:#FFFFFF;
+$colour2:#C0C0C0;
+$colour3:#808080;
+$colour4: #000000;
+$colour5: #FF0000;
+$colour6: #800000;
+$colour7: #FFFF00;
+$colour8: #808000;
+$colour9: #00FF00;
+$colour10:#008000;
+$colour11: #00FFFF;
+$colour12: #008080;
+$colour13:#0000FF;
+$colour14:#000080;
+$colour15: #FF00FF;
+$colour16: #800080;
+
+option:nth-child(1){
+background: $colour1;
+}
+option:nth-child(2){
+  background: $colour2;
+  }
+option:nth-child(3){
+    background: $colour3;
+    }
+option:nth-child(4){
+      background: $colour4;
+    }
+option:nth-child(5){
+  background: $colour5;
+  }
+option:nth-child(6){
+  background: $colour6;
+}
+option:nth-child(7){
+  background: $colour7;
+  }
+option:nth-child(8){
+  background: $colour8;
+  }
+option:nth-child(9){
+    background: $colour9;
+  }
+option:nth-child(10){
+      background: $colour10;
+  }
+option:nth-child(11){
+  background: $colour11;
+  }
+option:nth-child(12){
+  background: $colour12;
+  }
+option:nth-child(13){
+  background: $colour13;
+}
+option:nth-child(14){
+  background: $colour14;
+}
+option:nth-child(15){
+  background: $colour15;
+}
+option:nth-child(16){
+  background: $colour16;
+}

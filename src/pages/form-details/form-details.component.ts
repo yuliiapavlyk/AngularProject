@@ -15,6 +15,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   providers:[FormService]
 })
 export class FormDetailsComponent implements OnInit {
+  editForms:boolean=false;
   _id:number;
   forms$:Observable<IForm[]>;
   formDetails:FormGroup;
@@ -46,6 +47,7 @@ export class FormDetailsComponent implements OnInit {
 
   editForm(item:IForm){
     this.store.dispatch(new formActions.LoadForm(item.id));
+    this.editForms=!this.editForms;
   }
 
 
@@ -56,7 +58,12 @@ export class FormDetailsComponent implements OnInit {
       background:this.formDetails.get('background').value,
       id:this.formDetails.get('id').value
     };
-    this.store.dispatch(new formActions.UpdateForm(updatedForm))
+    this.store.dispatch(new formActions.UpdateForm(updatedForm));
+    this.editForms=!this.editForms;
+  }
+  deleteForm(item:IForm){
+    this.store.dispatch(new formActions.LoadForm(item.id));
+    this.store.dispatch(new formActions.DeleteForm(item.id));
   }
 
 }
