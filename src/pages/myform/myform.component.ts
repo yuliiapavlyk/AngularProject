@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 })
 export class MyformComponent implements OnInit {
 forms$:Observable<IForm[]>;
+public curId:number;
   constructor(private formService:FormService, private store:Store<fromForms.AppState>,
     private router:Router) {}
   ngOnInit() {
@@ -25,10 +26,12 @@ forms$:Observable<IForm[]>;
     this.forms$=this.store.pipe(select(fromForms.getForms))
   }
 
-  formDetail(form:IForm){
+  formDetail(item:IForm){
     this.router.navigate(['form-details']);
+    this.curId=item.id;
+    console.log(item.id);
+    return item.id;
   }
-
 addNewForm(){
 
 }

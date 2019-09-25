@@ -16,6 +16,8 @@
           <tr *ngFor="let item of (forms$ |async)">
             <th  scope="row">{{item.name}}</th>
             <td >{{item.background}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.fields}}</td>
             <th>
               <button (click)='editForm(item)' class="btn btn-info">Edit</button>
               <br>
@@ -50,6 +52,8 @@
         <option>#FF00FF</option>
         <option>#800080</option>
       </select>
+    </div>
+    <div><input type="text" formControlName='fields'>
     </div>
     <button type="submit" [disabled]="formDetails.invalid" class="btn btn-primary">Edit form</button>
   </form>
