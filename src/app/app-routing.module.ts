@@ -39,6 +39,13 @@ const routes: Routes = [
               ),
             },
             {
+              path:'form-details',
+              loadChildren: () =>
+                import('src/modules/form-details/form-details.module').then(
+                  (m) => m.FormDetailsModule
+                ),
+            },
+            {
               path: 'new-form',
                 loadChildren: () =>
                   import('src/modules/new-form/new-form.module').then(
@@ -51,7 +58,7 @@ const routes: Routes = [
                       import('src/modules/auth/auth.module').then(
                         (m) => m.AuthModule
                       ),
-                    },
+                    }
     ],
   },
 ];

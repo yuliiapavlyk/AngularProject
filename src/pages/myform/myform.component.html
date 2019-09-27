@@ -1,8 +1,8 @@
 <app-top-section></app-top-section>
 <div class="block-forms">
     <app-add-form  (onAddForm)="addNewForm($event)"></app-add-form>
-  <div *ngFor='let item of forms'>
-      <app-form-item (chooseOption)="Option($event)" [FromName]="item.name" [date]="item.date"></app-form-item>
+  <div *ngFor='let item of forms$|async'>
+      <app-form-item (chooseOption)="Option($event)" (click)='formDetail(form)' [FromName]="item.name" [date]="item.id"></app-form-item>
   </div>
 </div>
 

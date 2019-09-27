@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import{FormService} from '../../services/form.service'
+import { Form } from '@angular/forms';
+import { IForm } from 'src/interfaces/myform.model';
+import {Store, select} from '@ngrx/store';
+import * as formActions from '../../store/actions/myform.action';
+import { Observable } from "rxjs";
+import * as fromForms from "../../store/reducers/form.reducer";
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-myform',
@@ -8,27 +17,29 @@ import{FormService} from '../../services/form.service'
   providers:[FormService]
 })
 export class MyformComponent implements OnInit {
-
-  constructor(private formSrvc: FormService) { }
-  forms=[];
+forms$:Observable<IForm[]>;
+  constructor(private formService:FormService, private store:Store<fromForms.AppState>,
+    private router:Router) {}
   ngOnInit() {
-    this.forms=this.formSrvc.forms;
+    this.store.dispatch(new formActions.LoadForms())
+    this.forms$=this.store.pipe(select(fromForms.getForms))
   }
-formName='Standard name';
-date=new Date();
+
+  formDetail(form:IForm){
+    this.router.navigate(['form-details']);
+  }
 
 addNewForm(){
-  console.log("method, which add forms, works");
-  this.formName=prompt('Enter name of form');
-  if(this.formName!==null){
-    this.forms.push({name:this.formName, date:this.date});
-  }
+
 }
 
 Option(value:number){
   switch(value){
     case 1:
-      //to do
+      // let form:IForm;
+      // this.router.navigate(['form-details']);
+      //  console.log(this.store.dispatch(new formActions.LoadForm(form.name)));
+      //  this.store.dispatch(new formActions.LoadForm(form.name));
       break;
     case 2:
       //to do
