@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { FormService } from 'src/services/form.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {MyformComponent} from '../myform/myform.component';
+import { IFields } from 'src/interfaces/fields.model';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-form-details',
@@ -18,14 +20,19 @@ import {MyformComponent} from '../myform/myform.component';
 export class FormDetailsComponent implements OnInit {
   @Output() onChanged = new EventEmitter<boolean>();
   editForms:boolean=false;
-  _id:number;
   forms$:Observable<IForm[]>;
+  form$: Observable<IForm>;
+  showDetail:boolean=false;
   formDetails:FormGroup;
+
   constructor(private store:Store<fromForms.AppState>, private fb:FormBuilder) { }
 
 
   ngOnInit() {
     this.store.dispatch(new formActions.LoadForms())
+    const form$:Observable<IForm>=this.store.select(
+      fromForms.getCurrentForm
+    )
     this.forms$=this.store.pipe(select(fromForms.getForms))
     this.formDetails=this.fb.group({
       name:[' ', Validators.required],
@@ -33,9 +40,6 @@ export class FormDetailsComponent implements OnInit {
       id:['', Validators.required],
       fields:[' ']
     })
-    const form$:Observable<IForm>=this.store.select(
-      fromForms.getCurrentForm
-    )
 
     form$.subscribe(currentForm=>{
       if(currentForm){
@@ -49,12 +53,24 @@ export class FormDetailsComponent implements OnInit {
     });
   }
 
-  editForm(item:IForm){
-    this.store.dispatch(new formActions.LoadForm(item.id));
-    this.editForms=!this.editForms;
+  ShowDetails(item:IForm){
+    const openedForm:IForm={
+      name:item.name,
+      background:item.background,
+      id:item.id,
+      fields:item.fields
+    };
+    this.store.dispatch(new formActions.UpdateForm(openedForm));
+    this.showDetail=!this.showDetail;
+    this.store.dispatch(new formActions.LoadForms());
+    this.editForms=false;
+
   }
 
-
+  editForm(item:IForm){
+  this.store.dispatch(new formActions.LoadForm(item.id));
+    this.editForms=!this.editForms;
+  }
 
   updateForm(){
     const updatedForm:IForm={
@@ -66,8 +82,9 @@ export class FormDetailsComponent implements OnInit {
     this.store.dispatch(new formActions.UpdateForm(updatedForm));
     this.editForms=!this.editForms;
   }
+
+
   deleteForm(item:IForm){
     this.store.dispatch(new formActions.DeleteForm(item.id));
   }
-
 }

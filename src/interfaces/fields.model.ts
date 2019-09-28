@@ -1,5 +1,14 @@
 export interface IFields{
-    placeholder: string,
-    pattern: number,
-    fieldType: number
+  id: number,
+  placeholder:string,
+  pattern: {
+      id:number,
+      name: string,
+      value: string
+  },
+  fieldType: {
+      id: number,
+      type: string,
+      formControl: string
+  }
   }

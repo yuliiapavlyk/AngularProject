@@ -4,24 +4,39 @@
           <tr class="table-primary">
             <th scope="col">Name</th>
             <th scope="col">Background</th>
-            <!-- <th scope="col">Fields</th> -->
-            <th></th>
+            <th *ngIf='showDetail' scope="col">Fields</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</td>
           </tr>
-          <tr>
           <tr *ngFor="let item of (forms$ |async)">
             <th  scope="row">{{item.name}}</th>
             <td >{{item.background}}</td>
-            <td>{{item.id}}</td>
-            <td>{{item.fields}}</td>
+            <td *ngIf='showDetail'>
+              <div *ngFor='let field of item.fields'>
+              <hr>
+              <h6>Field:</h6>
+              <div>
+                  type:{{field.fieldType.type}}
+              </div>
+              <div>
+                  placeholder:{{field.placeholder}}
+              </div>
+             <div>
+                pattern:{{field.pattern.name}}
+             </div>
+            </div>
+          </td>
             <th>
-              <button (click)='editForm(item)' class="btn btn-info">Edit</button>
-              <br>
-              <button (click)='deleteForm(item)' class="btn btn-danger">Delete</button>
+                <button (click)='ShowDetails(item)' class="btn btn-info">Details</button>
+                <br>
+                <div *ngIf='showDetail'>
+                    <button (click)='editForm(item)' class="btn btn-info">Edit</button>
+                    <br>
+                    <button (click)='deleteForm(item)' class="btn btn-danger">Delete</button>
+                </div>
             </th>
           </tr>
         </tbody>
