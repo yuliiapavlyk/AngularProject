@@ -6,7 +6,8 @@ import { StoreModule } from '@ngrx/store';
 import { formReducer } from 'src/store/reducers/form.reducer';
 import { Effect, Actions, EffectsModule } from "@ngrx/effects";
 import { FormsEffect } from 'src/store/effects/form.effects';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormArray} from '@angular/forms';
+import { DetailFormComponent } from 'src/pages/detail-form/detail-form.component';
 
 const routes: Route[] = [
   {
@@ -16,12 +17,10 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [FormDetailsComponent],
+  declarations: [FormDetailsComponent, DetailFormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('forms', formReducer),
-    EffectsModule.forFeature([FormsEffect]),
     ReactiveFormsModule,
     FormsModule
   ]

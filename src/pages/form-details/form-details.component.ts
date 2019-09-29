@@ -24,6 +24,7 @@ export class FormDetailsComponent implements OnInit {
   form$: Observable<IForm>;
   showDetail:boolean=false;
   formDetails:FormGroup;
+  formPlaceholder:string;
 
   constructor(private store:Store<fromForms.AppState>, private fb:FormBuilder) { }
 
@@ -43,11 +44,20 @@ export class FormDetailsComponent implements OnInit {
 
     form$.subscribe(currentForm=>{
       if(currentForm){
+        const fieldsArray=currentForm.fields;
+        // fieldsArray.forEach(item=>{
+        //   this.formPlaceholder=item.placeholder;
+        //   console.log(item.pattern.name);
+        // })
+        for(let key of fieldsArray){
+          this.formPlaceholder=key.placeholder;
+          console.log(key.pattern.name);
+        }
         this.formDetails.patchValue({
           name:currentForm.name,
           background:currentForm.background,
           id:currentForm.id,
-          fields:currentForm.fields
+          fields:this.formPlaceholder
         })
       }
     });
@@ -64,11 +74,18 @@ export class FormDetailsComponent implements OnInit {
     this.showDetail=!this.showDetail;
     this.store.dispatch(new formActions.LoadForms());
     this.editForms=false;
-
   }
 
   editForm(item:IForm){
-  this.store.dispatch(new formActions.LoadForm(item.id));
+    const openedForm:IForm={
+      name:item.name,
+      background:item.background,
+      id:item.id,
+      fields:item.fields
+    };
+    this.store.dispatch(new formActions.UpdateForm(openedForm));
+    this.showDetail=!this.showDetail;
+    this.store.dispatch(new formActions.LoadForm(item.id));
     this.editForms=!this.editForms;
   }
 

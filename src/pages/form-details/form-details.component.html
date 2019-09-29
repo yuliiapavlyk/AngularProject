@@ -32,11 +32,9 @@
             <th>
                 <button (click)='ShowDetails(item)' class="btn btn-info">Details</button>
                 <br>
-                <div *ngIf='showDetail'>
                     <button (click)='editForm(item)' class="btn btn-info">Edit</button>
                     <br>
                     <button (click)='deleteForm(item)' class="btn btn-danger">Delete</button>
-                </div>
             </th>
           </tr>
         </tbody>
@@ -68,7 +66,8 @@
         <option>#800080</option>
       </select>
     </div>
-    <div><input type="text" formControlName='fields'>
+    <div *ngFor='let item of fields'>
+      <input type="text" formControlName='fields'>
     </div>
     <button type="submit" [disabled]="formDetails.invalid" class="btn btn-primary">Edit form</button>
   </form>
