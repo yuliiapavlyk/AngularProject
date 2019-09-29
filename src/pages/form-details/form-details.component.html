@@ -1,5 +1,5 @@
 <div>
-    <table class="table table-hover">
+    <table *ngIf='!showDetail' class="table table-hover">
         <thead>
           <tr class="table-primary">
             <th scope="col">Name</th>
@@ -14,8 +14,21 @@
           <tr *ngFor="let item of (forms$ |async)">
             <th  scope="row">{{item.name}}</th>
             <td >{{item.background}}</td>
-            <td *ngIf='showDetail'>
-              <div *ngFor='let field of item.fields'>
+            <th>
+                <button (click)='ShowDetails(item)' class="btn btn-info">Details</button>
+                <br>
+                <button data-toggle="modal" data-target="#exampleModal" class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf='showDetail'>
+        <div *ngFor="let item of (forms$ |async)" class="form-detail">
+          <div *ngIf='item.fields'>
+              <h4>Name:{{item.name}}</h4>
+              <p>Background:{{item.background}}</p>
+          </div>
+          <div *ngFor='let field of item.fields'>
               <hr>
               <h6>Field:</h6>
               <div>
@@ -28,17 +41,13 @@
                 pattern:{{field.pattern.name}}
              </div>
             </div>
-          </td>
-            <th>
-                <button (click)='ShowDetails(item)' class="btn btn-info">Details</button>
-                <br>
-                    <button (click)='editForm(item)' class="btn btn-info">Edit</button>
-                    <br>
-                    <button (click)='deleteForm(item)' class="btn btn-danger">Delete</button>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+            <div *ngIf='item.fields'>
+                <button (click)='editForm(item)' class="btn btn-info">Edit</button>
+                <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
+            </div>
+        </div>
+
+      </div>
 <div class="edit-form" *ngIf='editForms'>
   <form [formGroup]='formDetails' (ngSubmit)='updateForm()'>
     <div>
@@ -66,10 +75,23 @@
         <option>#800080</option>
       </select>
     </div>
-    <div *ngFor='let item of fields'>
-      <input type="text" formControlName='fields'>
-    </div>
+      <!-- <input type="text" formControlName='fieldsType'>
+      <input type="text" formControlName='fieldsPlaceholder'>
+      <input type="text" formControlName='fieldsPattern'> -->
     <button type="submit" [disabled]="formDetails.invalid" class="btn btn-primary">Edit form</button>
   </form>
 </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            This form was deleted
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

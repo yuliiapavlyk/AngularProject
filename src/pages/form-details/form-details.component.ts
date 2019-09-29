@@ -4,12 +4,8 @@ import {Store, select} from '@ngrx/store';
 import * as formActions from '../../store/actions/myform.action';
 import { Observable } from "rxjs";
 import * as fromForms from "../../store/reducers/form.reducer";
-import { Router } from '@angular/router';
 import { FormService } from 'src/services/form.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {MyformComponent} from '../myform/myform.component';
-import { IFields } from 'src/interfaces/fields.model';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-form-details',
@@ -24,7 +20,10 @@ export class FormDetailsComponent implements OnInit {
   form$: Observable<IForm>;
   showDetail:boolean=false;
   formDetails:FormGroup;
-  formPlaceholder:string;
+  fieldPlaceholder:string;
+  fieldType:string;
+  fieldPattern:string;
+  currentForm$:Observable<any>;
 
   constructor(private store:Store<fromForms.AppState>, private fb:FormBuilder) { }
 
@@ -39,25 +38,27 @@ export class FormDetailsComponent implements OnInit {
       name:[' ', Validators.required],
       background:['', Validators.required],
       id:['', Validators.required],
-      fields:[' ']
+      fieldsType:[' '],
+      fieldsPlaceholder:[''],
+      fieldsPattern:['']
     })
 
     form$.subscribe(currentForm=>{
       if(currentForm){
         const fieldsArray=currentForm.fields;
-        // fieldsArray.forEach(item=>{
-        //   this.formPlaceholder=item.placeholder;
-        //   console.log(item.pattern.name);
-        // })
         for(let key of fieldsArray){
-          this.formPlaceholder=key.placeholder;
-          console.log(key.pattern.name);
+          this.fieldPlaceholder=key.placeholder;
+          this.fieldType=key.fieldType.type;
+          this.fieldPattern=key.pattern.name;
+
         }
         this.formDetails.patchValue({
           name:currentForm.name,
           background:currentForm.background,
           id:currentForm.id,
-          fields:this.formPlaceholder
+          fieldsPlaceholder:this.fieldPlaceholder,
+          fieldsType:this.fieldType,
+          fieldsPattern:this.fieldPattern
         })
       }
     });
@@ -71,9 +72,8 @@ export class FormDetailsComponent implements OnInit {
       fields:item.fields
     };
     this.store.dispatch(new formActions.UpdateForm(openedForm));
+    this.store.dispatch(new formActions.LoadForm(item.id));
     this.showDetail=!this.showDetail;
-    this.store.dispatch(new formActions.LoadForms());
-    this.editForms=false;
   }
 
   editForm(item:IForm){
@@ -81,11 +81,11 @@ export class FormDetailsComponent implements OnInit {
       name:item.name,
       background:item.background,
       id:item.id,
-      fields:item.fields
+      //fields:item.fields
     };
     this.store.dispatch(new formActions.UpdateForm(openedForm));
-    this.showDetail=!this.showDetail;
     this.store.dispatch(new formActions.LoadForm(item.id));
+    console.log(item.name, item.id, item.background, item.fields);
     this.editForms=!this.editForms;
   }
 
@@ -94,7 +94,7 @@ export class FormDetailsComponent implements OnInit {
       name:this.formDetails.get('name').value,
       background:this.formDetails.get('background').value,
       id:this.formDetails.get('id').value,
-      fields:this.formDetails.get('fields').value
+      //fields:this.formDetails.get('fields').value
     };
     this.store.dispatch(new formActions.UpdateForm(updatedForm));
     this.editForms=!this.editForms;
