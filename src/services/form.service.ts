@@ -12,6 +12,7 @@ export class FormService {
   constructor(private http:HttpClient) { }
 
   private API_URL=env.environment.FORMS_URL;
+
   public  getForm():Observable<IForm[]>{
     return this.http.get<IForm[]>(`${this.API_URL}/forms`);
   }
@@ -20,12 +21,12 @@ export class FormService {
     return this.http.get<IForm>(`${this.API_URL}/forms/${payload}`);
   }
 
-  createForm(payload: IForm): Observable<IForm> {
-    return this.http.post<IForm>(`${this.API_URL}/forms`, payload);
+  createForm(form: IForm): Observable<IForm> {
+    return this.http.post<IForm>(`${this.API_URL}/forms`, form);
   }
 
   updateForm(form: IForm): Observable<IForm> {
-    return this.http.patch<IForm>(
+    return this.http.put<IForm>(
       `${this.API_URL}/forms/${form.id}`,form
     );
   }

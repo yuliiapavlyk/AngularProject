@@ -11,18 +11,22 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form>               
+                <form [formGroup]="addFieldForm">
                   <div class='form-input'>
                     <label>Name</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control"
+                    type="text"
+                    formControlName="name">
                 </div>
                 <div class='form-input'>
                   <label>Pattern</label>
-                  <input class="form-control" type="text">
+                  <input class="form-control"
+                  type="text"
+                  formControlName="pattern">
                 </div>
                 <div class='form-input'>
                     <label>Type</label>
-                    <select class="form-control">
+                    <select class="form-control" formControlName="type">
                       <option value="" selected disabled hidden>Choose here</option>
                       <option value="button">button</option>
                       <option value="checkbox">checkbox	</option>
@@ -32,19 +36,24 @@
                       <option value="text">text</option>
                     </select>
                 </div>
+
                 <div class='form-input'>
                   <label>Placeholder</label>
-                  <input class="form-control" type="text">
+                  <input class="form-control"
+                  type="text"
+                  formControlName="placeholder">
                 </div>
+
                 <div class='form-required'>
-                  <input type="checkbox">
+                  <input type="checkbox"
+                  formControlName="formControl">
                   <label>Required</label>
-                </div>              
+                </div>
                 </form>
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="addField()">Save changes</button>
+                <button type="button"  data-dismiss="modal"  class="btn btn-primary" (click)="addField()">Save changes</button>
               </div>
             </div>
           </div>
@@ -52,7 +61,7 @@
     </div>
 
     <div>
-        <button class="color-violet">SAVE</button>
+        <button class="color-violet" (click)="saveForm()">SAVE</button>
     </div>
     <div>
         <button class ="color-green">SHARE</button>
@@ -60,15 +69,40 @@
 </div>
 
 <div class="general-configs">
+  <form  [formGroup]="mainFormInfo">
         <div >
-            <label for="title" class="input-label">Title             
+            <label for="title" class="input-label">Title
             </label><br/>
-            <input type="text" placeholder="form name" name="title" class="enter-form">
+            <input type="text"
+            placeholder="form name"
+            name="title"
+            class="enter-form"
+            formControlName="title">
         </div><br/>
         <div class="data">
-            <label for="styles" class="input-label">CSS Styles                
+            <label for="styles" class="input-label">CSS Styles
             </label><br/>
-            <textarea placeholder="styles for form" name="styles" class="enter-form"></textarea>
-  </div>
+            <textarea placeholder="styles for form"
+            name="styles"
+            class="enter-form"
+            formControlName="styles"></textarea>
+         </div>
+  </form>
+</div>
+
+<div *ngIf="formFields.length > 0">
+          <div *ngFor="let field of formFields" class="fieldTable">
+          <div>
+          <input [type]="field.type"
+          [placeholder]="field.placeholder"
+          [required]='field.formControl'
+          [name]='field.name'
+          [pattern]='field.pattern'>
+          </div>
+          <div>
+              <button (click)="deleteField(field)">DELETE</button>
+            </div>
+          </div>
+
 </div>
 

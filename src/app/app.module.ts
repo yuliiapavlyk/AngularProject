@@ -15,7 +15,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FormDetailsModule } from 'src/modules/form-details/form-details.module';
+import { formReducer } from 'src/store/reducers/form.reducer';
 import { EffectsModule } from "@ngrx/effects";
+import { FormsEffect } from 'src/store/effects/form.effects';
 
 
 @NgModule({
@@ -29,20 +32,19 @@ import { EffectsModule } from "@ngrx/effects";
     FormsModuleM,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    BrowserModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([]),
     HttpClientModule,
+    FormDetailsModule,
+    StoreModule.forFeature('forms', formReducer),
+    EffectsModule.forFeature([FormsEffect]),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [TokenInterceptorService, {
-    provide:HTTP_INTERCEPTORS,
-    useClass:TokenInterceptorService,
-    multi:true
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
   }],
   bootstrap: [AppComponent],
 })

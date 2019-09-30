@@ -11,7 +11,7 @@ import {IUser, IRegisterInfo} from "src/interfaces/user";
 export class UserService {
 
   private  API_URL = env.environment.LOGIN_URL;;
-
+  private  API_URL_MAIN = env.environment.FORMS_URL;
   constructor(private http:HttpClient) {
   }
 
@@ -32,12 +32,10 @@ export class UserService {
   }
 
   updateUser(user:IUser):Observable<IUser>{
-    //TODO change end-point after adding this functionality on back-end side.
-    return this.http.put<IUser>(`${this.API_URL}/update`, user);
+    return this.http.put<IUser>(`${this.API_URL_MAIN}/account`, user);
   }
 
   getCurrentUserInfo():Observable<IUser>{
-    //TODO change end-point after adding this functionality on back-end side.
-    return this.http.get<IUser>(`${this.API_URL}/aboutMe`);
+    return this.http.get<IUser>(`${this.API_URL_MAIN}/account`);
   }
 }
