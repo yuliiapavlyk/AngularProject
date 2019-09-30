@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class AddFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  addForm() :void{
+  addForm(): void {
     this.router.navigate(['new-form']);
     //this.onAddForm.emit();
   }

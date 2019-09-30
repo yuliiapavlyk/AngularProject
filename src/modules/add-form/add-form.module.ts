@@ -8,6 +8,6 @@ import { AddFormComponent } from 'src/pages/add-form/add-form.component';
   imports: [
     CommonModule
   ],
-  exports:[AddFormComponent]
+  exports: [AddFormComponent]
 })
 export class AddFormModule { }
