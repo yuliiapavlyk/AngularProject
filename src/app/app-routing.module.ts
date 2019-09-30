@@ -25,33 +25,33 @@ const routes: Routes = [
           ),
       },
       {
-      path: 'user-profile',
+        path: 'user-profile',
         loadChildren: () =>
-          import('src/modules/user-profile.module').then(
-            (m) => m.UserProfileModule
+        import('src/modules/user-profile.module').then(
+          (m) => m.UserProfileModule
           ),
-        },
-        {
-          path: 'my-forms',
-            loadChildren: () =>
-              import('src/modules/forms/forms.module').then(
-                (m) => m.FormsModuleM
-              ),
-            },
-            {
-              path: 'new-form',
-                loadChildren: () =>
-                  import('src/modules/new-form/new-form.module').then(
-                    (m) => m.NewFormModule
-                  ),
-                },
-                {
-                  path: 'login',
-                    loadChildren: () =>
-                      import('src/modules/auth/auth.module').then(
-                        (m) => m.AuthModule
-                      ),
-                    }
+      },
+      {
+        path: 'my-forms',
+        loadChildren: () =>
+        import('src/modules/forms/forms.module').then(
+          (m) => m.FormsModuleM
+          ),
+      },
+      {
+        path: 'new-form',
+        loadChildren: () =>
+        import('src/modules/new-form/new-form.module').then(
+          (m) => m.NewFormModule
+          ),
+      },
+      {
+        path: 'login',
+        loadChildren: () =>
+        import('src/modules/auth/auth.module').then(
+          (m) => m.AuthModule
+          ),
+      }
     ],
   },
 ];

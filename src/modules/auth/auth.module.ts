@@ -6,7 +6,7 @@ import { Route } from '@angular/router';
 import { LoginComponent } from 'src/pages/auth/login/login.component';
 import { RegisterComponent } from 'src/pages/auth/register/register.component';
 
-const routes: Route[] = [
+const routes: Route[] = [ // TODO: why we need that???
   {
     path: '/login',
     component: LoginComponent,

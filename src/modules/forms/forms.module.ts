@@ -8,6 +8,7 @@ import { AddFormModule } from '../add-form/add-form.module';
 import { AddFormComponent } from 'src/pages/add-form/add-form.component';
 import { TopSectionModule } from '../top-section/top-section.module';
 import { TopSectionComponent } from 'src/pages/top-section/top-section.component';
+
 const routes: Route[] = [
   {
     path: '',
@@ -23,6 +24,6 @@ const routes: Route[] = [
     TopSectionModule,
     RouterModule.forChild(routes)
   ],
-  exports:[FormItemComponent, AddFormComponent, TopSectionComponent]
+  exports: [FormItemComponent, AddFormComponent, TopSectionComponent]
 })
 export class FormsModuleM { }
