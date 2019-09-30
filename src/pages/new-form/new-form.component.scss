@@ -1,23 +1,22 @@
 button{
     height: 45px;
-    border-radius: 5px;
     color: white;
     border: white 1px solid;
     border-radius: 5px;
 }
 .color-violet{
     background:#9c68d9;
+    width: 200px;
 }
 .color-green{
     background:#69AFB6;
+    width: 200px;
 }
 .navigation{
     padding: 2px;
     background: white;
-    width: 40%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-
 }
 .add-field{
   padding: 20px;
@@ -76,7 +75,7 @@ justify-content: flex-end;
 .general-configs{
     padding: 2px;
     background: white;
-    width: 40%;
+    width: 100%;
 }
 .enter-form{
     width: 100%;
@@ -87,4 +86,8 @@ justify-content: flex-end;
 
   .form-input{
     margin:0 5px 10px 5px;
+  }
+  .fieldTable{
+    display:flex;
+    justify-content: space-between;
   }
