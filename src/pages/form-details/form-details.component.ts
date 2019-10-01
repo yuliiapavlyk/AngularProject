@@ -50,7 +50,6 @@ export class FormDetailsComponent implements OnInit {
           this.fieldPlaceholder=key.placeholder;
           this.fieldType=key.fieldType.type;
           this.fieldPattern=key.pattern.name;
-
         }
         this.formDetails.patchValue({
           name:currentForm.name,
@@ -81,7 +80,7 @@ export class FormDetailsComponent implements OnInit {
       name:item.name,
       background:item.background,
       id:item.id,
-      //fields:item.fields
+      // fieldsType:item.fields.
     };
     this.store.dispatch(new formActions.UpdateForm(openedForm));
     this.store.dispatch(new formActions.LoadForm(item.id));
@@ -94,7 +93,7 @@ export class FormDetailsComponent implements OnInit {
       name:this.formDetails.get('name').value,
       background:this.formDetails.get('background').value,
       id:this.formDetails.get('id').value,
-      //fields:this.formDetails.get('fields').value
+      fields:this.formDetails.get('fields').value
     };
     this.store.dispatch(new formActions.UpdateForm(updatedForm));
     this.editForms=!this.editForms;

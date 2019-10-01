@@ -17,7 +17,7 @@
             <th>
                 <button (click)='ShowDetails(item)' class="btn btn-info">Details</button>
                 <br>
-                <button data-toggle="modal" data-target="#exampleModal" class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
+                <button data-toggle="modal" data-target="#deleteForm" class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
             </th>
           </tr>
         </tbody>
@@ -43,7 +43,7 @@
             </div>
             <div *ngIf='item.fields'>
                 <button (click)='editForm(item)' class="btn btn-info">Edit</button>
-                <button type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
+                <button type="button" data-toggle="modal" data-target="#deleteForm"  class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
             </div>
         </div>
 
@@ -75,15 +75,23 @@
         <option>#800080</option>
       </select>
     </div>
-      <!-- <input type="text" formControlName='fieldsType'>
-      <input type="text" formControlName='fieldsPlaceholder'>
-      <input type="text" formControlName='fieldsPattern'> -->
+    <div class="fields" *ngFor='let field of fields; let i=index'>
+        <input type="text"  [formControlName]="i">
+
+    </div>
+    <!-- <div>
+        <label>Type</label>
+        <input type="text" formControlName='fieldsType' class="form-control">
+        <input type="text" formControlName='fieldsPlaceholder'>
+        <input type="text" formControlName='fieldsPattern'>
+    </div> -->
+
     <button type="submit" [disabled]="formDetails.invalid" class="btn btn-primary">Edit form</button>
   </form>
 </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="deleteForm" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
