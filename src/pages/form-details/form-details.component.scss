@@ -1,6 +1,3 @@
-option{
-  background: red;
-}
 .btn {
   margin: 5px;
   width: 150px;
@@ -23,51 +20,51 @@ $colour14:#000080;
 $colour15: #FF00FF;
 $colour16: #800080;
 
-option:nth-child(1){
+.bg option:nth-child(1){
 background: $colour1;
 }
-option:nth-child(2){
+.bg option:nth-child(2){
   background: $colour2;
   }
-option:nth-child(3){
+.bg option:nth-child(3){
     background: $colour3;
     }
-option:nth-child(4){
+.bg option:nth-child(4){
       background: $colour4;
     }
-option:nth-child(5){
+.bg option:nth-child(5){
   background: $colour5;
   }
-option:nth-child(6){
+.bg option:nth-child(6){
   background: $colour6;
 }
-option:nth-child(7){
+.bg option:nth-child(7){
   background: $colour7;
   }
-option:nth-child(8){
+  .bg option:nth-child(8){
   background: $colour8;
   }
-option:nth-child(9){
+  .bg option:nth-child(9){
     background: $colour9;
   }
-option:nth-child(10){
+.bg option:nth-child(10){
       background: $colour10;
   }
-option:nth-child(11){
+.bg option:nth-child(11){
   background: $colour11;
   }
-option:nth-child(12){
+  .bg option:nth-child(12){
   background: $colour12;
   }
-option:nth-child(13){
+  .bg option:nth-child(13){
   background: $colour13;
 }
-option:nth-child(14){
+.bg option:nth-child(14){
   background: $colour14;
 }
-option:nth-child(15){
+.bg option:nth-child(15){
   background: $colour15;
 }
-option:nth-child(16){
+.bg option:nth-child(16){
   background: $colour16;
 }

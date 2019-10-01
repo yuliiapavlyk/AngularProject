@@ -14,7 +14,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   providers:[FormService]
 })
 export class FormDetailsComponent implements OnInit {
-  @Output() onChanged = new EventEmitter<boolean>();
   editForms:boolean=false;
   forms$:Observable<IForm[]>;
   form$: Observable<IForm>;
@@ -23,7 +22,8 @@ export class FormDetailsComponent implements OnInit {
   fieldPlaceholder:string;
   fieldType:string;
   fieldPattern:string;
-  currentForm$:Observable<any>;
+  currentForm:IForm;
+  newField:boolean=false;
 
   constructor(private store:Store<fromForms.AppState>, private fb:FormBuilder) { }
 
@@ -38,32 +38,24 @@ export class FormDetailsComponent implements OnInit {
       name:[' ', Validators.required],
       background:['', Validators.required],
       id:['', Validators.required],
-      fieldsType:[' '],
-      fieldsPlaceholder:[''],
-      fieldsPattern:['']
-    })
+      placeholder:[' '],
+      pattern:['', Validators.required],
+      fieldType:['', Validators.required]
+    }),
+
 
     form$.subscribe(currentForm=>{
       if(currentForm){
-        const fieldsArray=currentForm.fields;
-        for(let key of fieldsArray){
-          this.fieldPlaceholder=key.placeholder;
-          this.fieldType=key.fieldType.type;
-          this.fieldPattern=key.pattern.name;
-        }
         this.formDetails.patchValue({
           name:currentForm.name,
           background:currentForm.background,
           id:currentForm.id,
-          fieldsPlaceholder:this.fieldPlaceholder,
-          fieldsType:this.fieldType,
-          fieldsPattern:this.fieldPattern
         })
       }
     });
   }
 
-  ShowDetails(item:IForm){
+  showDetails(item:IForm){
     const openedForm:IForm={
       name:item.name,
       background:item.background,
@@ -80,11 +72,11 @@ export class FormDetailsComponent implements OnInit {
       name:item.name,
       background:item.background,
       id:item.id,
-      // fieldsType:item.fields.
     };
     this.store.dispatch(new formActions.UpdateForm(openedForm));
     this.store.dispatch(new formActions.LoadForm(item.id));
-    console.log(item.name, item.id, item.background, item.fields);
+    this.currentForm=item;
+    console.log(this.currentForm);
     this.editForms=!this.editForms;
   }
 
@@ -93,14 +85,25 @@ export class FormDetailsComponent implements OnInit {
       name:this.formDetails.get('name').value,
       background:this.formDetails.get('background').value,
       id:this.formDetails.get('id').value,
-      fields:this.formDetails.get('fields').value
+      fields:[{placeholder:this.formDetails.get('placeholder').value,
+      pattern:this.formDetails.get('pattern').value,
+      fieldType:this.formDetails.get('fieldType').value}]
     };
+    for(let key of this.currentForm.fields){
+      console.log(key.placeholder, key.pattern, key.fieldType);
+      updatedForm.fields.push({placeholder: key.placeholder, pattern:key.pattern, fieldType:key.fieldType});
+      console.log(updatedForm.fields);
+    }
     this.store.dispatch(new formActions.UpdateForm(updatedForm));
     this.editForms=!this.editForms;
+    this.newField=!this.newField;
   }
 
 
   deleteForm(item:IForm){
     this.store.dispatch(new formActions.DeleteForm(item.id));
+  }
+  addField(){
+    this.newField=!this.newField;
   }
 }

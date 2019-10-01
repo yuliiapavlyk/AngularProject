@@ -15,7 +15,7 @@
             <th  scope="row">{{item.name}}</th>
             <td >{{item.background}}</td>
             <th>
-                <button (click)='ShowDetails(item)' class="btn btn-info">Details</button>
+                <button (click)='showDetails(item)' class="btn btn-info">Details</button>
                 <br>
                 <button data-toggle="modal" data-target="#deleteForm" class="btn btn-danger" (click)='deleteForm(item)'>Delete</button>
             </th>
@@ -49,14 +49,14 @@
 
       </div>
 <div class="edit-form" *ngIf='editForms'>
-  <form [formGroup]='formDetails' (ngSubmit)='updateForm()'>
+  <form [formGroup]='formDetails' (ngSubmit)='updateForm(item)'>
     <div>
       <label>Name</label>
       <input class="form-control" type="text" formControlName='name'>
     </div>
     <div>
       <label>Background</label>
-      <select class='form-control' formControlName='background'>
+      <select class='form-control bg' formControlName='background'>
         <option>#FFFFFF</option>
         <option>#C0C0C0</option>
         <option>#808080</option>
@@ -75,16 +75,55 @@
         <option>#800080</option>
       </select>
     </div>
-    <div class="fields" *ngFor='let field of fields; let i=index'>
-        <input type="text"  [formControlName]="i">
-
+    <div *ngIf='newField'>
+     <h4>Add field</h4>
+     <div>
+        <p>Choose type</p>
+        <div>
+            <ul>
+                <li>1 - password</li>
+                <li>2 - textarea</li>
+                <li>3 - text</li>
+                <li>4 - file</li>
+                <li>5 - radio</li>
+                <li>6 - checkbox</li>
+                <li>7 - submit</li>
+              </ul>
+        </div>
+    <div>
+        <select class='form-control' formControlName="fieldType">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+          </select>
     </div>
-    <!-- <div>
-        <label>Type</label>
-        <input type="text" formControlName='fieldsType' class="form-control">
-        <input type="text" formControlName='fieldsPlaceholder'>
-        <input type="text" formControlName='fieldsPattern'>
-    </div> -->
+    <p>Enter placeholder</p>
+    <input type="text" class='form-control' formControlName="placeholder">
+     </div>
+     <div>
+       <p>Choose pattern</p>
+       <div>
+          <ul>
+              <li>1 - url</li>
+              <li>2 - email</li>
+              <li>3 - ip_address</li>
+            </ul>
+      </div>
+  <div>
+      <select class='form-control' formControlName="pattern" [disabled]>
+        <option></option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+  </div>
+     </div>
+    </div>
+    <button *ngIf='!newField' (click)='addField()' class="btn btn-success">Add field</button>
 
     <button type="submit" [disabled]="formDetails.invalid" class="btn btn-primary">Edit form</button>
   </form>
