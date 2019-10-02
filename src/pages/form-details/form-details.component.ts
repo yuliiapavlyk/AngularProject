@@ -40,7 +40,7 @@ export class FormDetailsComponent implements OnInit {
       id:['', Validators.required],
       placeholder:[' '],
       pattern:['', Validators.required],
-      fieldType:['', Validators.required]
+      type:['', Validators.required]
     }),
 
 
@@ -87,11 +87,11 @@ export class FormDetailsComponent implements OnInit {
       id:this.formDetails.get('id').value,
       fields:[{placeholder:this.formDetails.get('placeholder').value,
       pattern:this.formDetails.get('pattern').value,
-      fieldType:this.formDetails.get('fieldType').value}]
+      type:this.formDetails.get('type').value}]
     };
     for(let key of this.currentForm.fields){
-      console.log(key.placeholder, key.pattern, key.fieldType);
-      updatedForm.fields.push({placeholder: key.placeholder, pattern:key.pattern, fieldType:key.fieldType});
+      console.log(key.placeholder, key.pattern, key.type);
+      updatedForm.fields.push({placeholder: key.placeholder, pattern:key.pattern, type:key.type});
       console.log(updatedForm.fields);
     }
     this.store.dispatch(new formActions.UpdateForm(updatedForm));

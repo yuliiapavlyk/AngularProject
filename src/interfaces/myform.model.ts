@@ -1,9 +1,9 @@
 import { IUser } from "./user";
-import { IFields } from './fields.model';
+import { IFormField } from './form-field.model';
 
 export interface IForm {
 name: string,
 id?:number,
 background: string,
-fields?: IFields[]
+fields?:  IFormField[];
 }
