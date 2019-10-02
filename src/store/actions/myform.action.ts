@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import { IForm } from 'src/interfaces/myform.model';
+import { IGetForm } from 'src/interfaces/getmyform.model';
 import { Update } from "@ngrx/entity";
 
 
@@ -28,7 +28,7 @@ export class LoadForms implements Action{
 export class LoadFormsSuccess implements Action{
   readonly type = FormActionType.LOAD_FORMS_SUCCESS
 
-  constructor(public payload:IForm[]){
+  constructor(public payload:IGetForm[]){
   }
 }
 
@@ -48,7 +48,7 @@ export class LoadForm implements Action{
 export class LoadFormSuccess implements Action{
   readonly type = FormActionType.LOAD_FORM_SUCCESS
 
-  constructor(public payload:IForm){
+  constructor(public payload:IGetForm){
   }
 }
 
@@ -60,7 +60,7 @@ export class LoadFormFail implements Action{
 
 export class CreateForm implements Action{
   readonly type = FormActionType.CREATE_FORM
-  constructor(public payload:IForm){
+  constructor(public payload:IGetForm){
 
   }
 }
@@ -68,7 +68,7 @@ export class CreateForm implements Action{
 export class CreateFormSuccess implements Action{
   readonly type = FormActionType.CREATE_FORM_SUCCESS
 
-  constructor(public payload:IForm){
+  constructor(public payload:IGetForm){
   }
 }
 
@@ -80,7 +80,7 @@ export class CreateFormFail implements Action{
 
 export class UpdateForm implements Action{
   readonly type = FormActionType.UPDATE_FORM
-  constructor(public payload:IForm){
+  constructor(public payload:IGetForm){
 
   }
 }
@@ -88,7 +88,7 @@ export class UpdateForm implements Action{
 export class UpdateFormSuccess implements Action{
   readonly type = FormActionType.UPDATE_FORM_SUCCESS
 
-  constructor(public payload:Update<IForm>){
+  constructor(public payload:Update<IGetForm>){
   }
 }
 

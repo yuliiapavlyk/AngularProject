@@ -1,5 +1,5 @@
 import { Component, OnInit, Output,  EventEmitter } from '@angular/core';
-import { IForm } from 'src/interfaces/myform.model';
+import { IGetForm} from 'src/interfaces/getmyform.model';
 import {Store, select} from '@ngrx/store';
 import * as formActions from '../../store/actions/myform.action';
 import { Observable } from "rxjs";
@@ -15,14 +15,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class FormDetailsComponent implements OnInit {
   editForms:boolean=false;
-  forms$:Observable<IForm[]>;
-  form$: Observable<IForm>;
+  forms$:Observable<IGetForm[]>;
+  form$: Observable<IGetForm>;
   showDetail:boolean=false;
   formDetails:FormGroup;
   fieldPlaceholder:string;
   fieldType:string;
   fieldPattern:string;
-  currentForm:IForm;
+  currentForm:IGetForm;
   newField:boolean=false;
 
   constructor(private store:Store<fromForms.AppState>, private fb:FormBuilder) { }
@@ -30,7 +30,7 @@ export class FormDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new formActions.LoadForms())
-    const form$:Observable<IForm>=this.store.select(
+    const form$:Observable<IGetForm>=this.store.select(
       fromForms.getCurrentForm
     )
     this.forms$=this.store.pipe(select(fromForms.getForms))
@@ -55,8 +55,8 @@ export class FormDetailsComponent implements OnInit {
     });
   }
 
-  showDetails(item:IForm){
-    const openedForm:IForm={
+  showDetails(item:IGetForm){
+    const openedForm:IGetForm={
       name:item.name,
       background:item.background,
       id:item.id,
@@ -67,8 +67,8 @@ export class FormDetailsComponent implements OnInit {
     this.showDetail=!this.showDetail;
   }
 
-  editForm(item:IForm){
-    const openedForm:IForm={
+  editForm(item:IGetForm){
+    const openedForm:IGetForm={
       name:item.name,
       background:item.background,
       id:item.id,
@@ -81,7 +81,7 @@ export class FormDetailsComponent implements OnInit {
   }
 
   updateForm(){
-    const updatedForm:IForm={
+    const updatedForm:IGetForm={
       name:this.formDetails.get('name').value,
       background:this.formDetails.get('background').value,
       id:this.formDetails.get('id').value,
@@ -100,7 +100,7 @@ export class FormDetailsComponent implements OnInit {
   }
 
 
-  deleteForm(item:IForm){
+  deleteForm(item:IGetForm){
     this.store.dispatch(new formActions.DeleteForm(item.id));
   }
   addField(){

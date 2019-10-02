@@ -1,10 +1,10 @@
-import { IForm } from 'src/interfaces/myform.model';
+import { IGetForm } from 'src/interfaces/getmyform.model';
 import * as fromRoot from '../state/app.state';
 import * as formAction from '../actions/myform.action';
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
-export interface FormsState extends EntityState<IForm>{
+export interface FormsState extends EntityState<IGetForm>{
   selectedFormId:number|null,
   loading:boolean,
   loaded:boolean,
@@ -15,7 +15,7 @@ export interface AppState extends fromRoot.AppState{
 forms:FormsState
 }
 
-export const formAdapter:EntityAdapter<IForm>=createEntityAdapter<IForm>();
+export const formAdapter:EntityAdapter<IGetForm>=createEntityAdapter<IGetForm>();
 export const defaultForm:FormsState={
   ids:[],
   entities:{},
