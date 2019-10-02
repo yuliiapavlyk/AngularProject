@@ -1,4 +1,4 @@
-<p>form-details works!</p>
+
 <div>
   <table *ngIf='!showDetail' class="table table-hover">
       <thead>
@@ -97,8 +97,8 @@
    <div>
      <p>Choose pattern</p>
 <div>
-    <select class='form-control' formControlName="pattern" [disabled]>
-      <option></option>
+    <select class='form-control' formControlName="pattern">
+      <option value="0">none</option>
         <option value='1'>url</option>
         <option value='2'>email</option>
         <option value='3'>ip_address</option>
