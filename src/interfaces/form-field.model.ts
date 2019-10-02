@@ -1,7 +1,7 @@
 interface IFormField {
-  name: string;
+  name?: string;
   pattern: string;
   type: string;
   placeholder: string;
-  formControl: string;
+  formControl?: string;
 }
