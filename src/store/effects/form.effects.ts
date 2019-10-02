@@ -6,11 +6,10 @@ import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
 import {map, mergeMap, catchError} from 'rxjs/operators';
 import * as formsActions from '../actions/myform.action';
-import { IGetForm } from 'src/interfaces/getmyform.model';
+import { IForm } from 'src/interfaces/myform.model';
 
 @Injectable()
 export class FormsEffect{
-
   constructor(private actions$:Actions,
     private formService:FormService){}
 
@@ -21,7 +20,7 @@ loadForms$:Observable<Action>=this.actions$.pipe(
   ),
   mergeMap((actions:formsActions.LoadForms)=>
   this.formService.getForm().pipe(
-    map((forms:IGetForm[])=>
+    map((forms:IForm[])=>
     new formsActions.LoadFormsSuccess(forms)
     ),
     catchError(err=>of(new formsActions.LoadFormsFail(err)))
@@ -35,7 +34,7 @@ loadForm$:Observable<Action>=this.actions$.pipe(
   ),
   mergeMap((action:formsActions.LoadForm)=>
   this.formService.getFormById(action.payload).pipe(
-    map((form:IGetForm)=>
+    map((form:IForm)=>
     new formsActions.LoadFormSuccess(form)
     ),
     catchError(err=>of(new formsActions.LoadFormFail(err)))
@@ -48,9 +47,9 @@ createForm$:Observable<Action>=this.actions$.pipe(
     formsActions.FormActionType.CREATE_FORM
   ),
   map((action:formsActions.CreateForm)=>action.payload),
-  mergeMap((form:IGetForm)=>
+  mergeMap((form:IForm)=>
   this.formService.createForm(form).pipe(
-    map((newForm:IGetForm)=>
+    map((newForm:IForm)=>
     new formsActions.CreateFormSuccess(newForm)
     ),
     catchError(err=>of(new formsActions.CreateFormFail(err)))
@@ -62,9 +61,9 @@ updateForm$:Observable<Action>=this.actions$.pipe(
     formsActions.FormActionType.UPDATE_FORM
   ),
   map((action:formsActions.UpdateForm)=>action.payload),
-  mergeMap((form:IGetForm)=>
+  mergeMap((form:IForm)=>
   this.formService.updateForm(form).pipe(
-    map((updateForm:IGetForm)=>
+    map((updateForm:IForm)=>
     new formsActions.UpdateFormSuccess(
       {id:updateForm.id,
        changes:updateForm

@@ -1,7 +1,7 @@
 import { IUser } from "./user";
 import { IFields } from './fields.model';
 
-export interface IGetForm {
+export interface IForm {
 name: string,
 id?:number,
 background: string,

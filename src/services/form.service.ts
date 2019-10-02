@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IGetForm} from 'src/interfaces/getmyform.model';
+import { IForm } from 'src/interfaces/myform.model';
 import * as env from 'src/environments/environment';
 
 @Injectable({
@@ -12,20 +12,20 @@ export class FormService {
   constructor(private http:HttpClient) { }
 
   private API_URL=env.environment.FORMS_URL;
-  public  getForm():Observable<IGetForm[]>{
-    return this.http.get<IGetForm[]>(`${this.API_URL}/forms`);
+  public  getForm():Observable<IForm[]>{
+    return this.http.get<IForm[]>(`${this.API_URL}/forms`);
   }
 
-  getFormById(payload: number):Observable<IGetForm> {
-    return this.http.get<IGetForm>(`${this.API_URL}/forms/${payload}`);
+  getFormById(payload: number):Observable<IForm> {
+    return this.http.get<IForm>(`${this.API_URL}/forms/${payload}`);
   }
 
-  createForm(payload: IGetForm): Observable<IGetForm> {
-    return this.http.post<IGetForm>(`${this.API_URL}/forms`, payload);
+  createForm(payload: IForm): Observable<IForm> {
+    return this.http.post<IForm>(`${this.API_URL}/forms`, payload);
   }
 
-  updateForm(form: IGetForm): Observable<IGetForm> {
-    return this.http.put<IGetForm>(
+  updateForm(form: IForm): Observable<IForm> {
+    return this.http.put<IForm>(
       `${this.API_URL}/forms/${form.id}`,form
     );
   }
