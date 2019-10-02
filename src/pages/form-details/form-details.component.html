@@ -80,26 +80,15 @@
    <h4>Add field</h4>
    <div>
       <p>Choose type</p>
-      <div>
-          <ul>
-              <li>1 - password</li>
-              <li>2 - textarea</li>
-              <li>3 - text</li>
-              <li>4 - file</li>
-              <li>5 - radio</li>
-              <li>6 - checkbox</li>
-              <li>7 - submit</li>
-            </ul>
-      </div>
   <div>
       <select class='form-control' formControlName="type">
           <option value="1">password</option>
           <option value="2">textarea</option>
           <option value="3">text</option>
           <option value="4">file</option>
-          <option value="5"></option>
-          <option value="6">6</option>
-          <option value="7">7</option>
+          <option value="5">radio</option>
+          <option value="6">checkbox</option>
+          <option value="7">submit</option>
         </select>
   </div>
   <p>Enter placeholder</p>
@@ -107,19 +96,12 @@
    </div>
    <div>
      <p>Choose pattern</p>
-     <div>
-        <ul>
-            <li>1 - url</li>
-            <li>2 - email</li>
-            <li>3 - ip_address</li>
-          </ul>
-    </div>
 <div>
     <select class='form-control' formControlName="pattern" [disabled]>
       <option></option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+        <option value='1'>url</option>
+        <option value='2'>email</option>
+        <option value='3'>ip_address</option>
       </select>
 </div>
    </div>

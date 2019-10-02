@@ -84,14 +84,14 @@ export class FormDetailsComponent implements OnInit {
       name:this.formDetails.get('name').value,
       background:this.formDetails.get('background').value,
       id:this.formDetails.get('id').value,
-      fields:null
-      // fields:[{placeholder:this.formDetails.get('placeholder').value,
-      // pattern:this.formDetails.get('pattern').value,
-      // type:this.formDetails.get('type').value}]
+      //fields:null
+      fields:[{placeholder:this.formDetails.get('placeholder').value,
+      pattern:this.formDetails.get('pattern').value,
+      type:this.formDetails.get('type').value}]
     };
     for(let key of this.currentForm.fields){
       console.log(key.placeholder, key.pattern, key.type);
-     // updatedForm.fields.push({placeholder: key.placeholder, pattern:key.pattern, type:key.type});
+      updatedForm.fields.push({placeholder: key.placeholder, pattern:key.pattern, type:key.type});
       console.log(updatedForm.fields);
     }
     this.store.dispatch(new formActions.UpdateForm(updatedForm));
