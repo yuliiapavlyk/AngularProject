@@ -36,6 +36,7 @@ import { FormsEffect } from 'src/store/effects/form.effects';
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forFeature('forms', formReducer),
+    EffectsModule.forFeature([FormsEffect]),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([FormsEffect]),
     StoreDevtoolsModule.instrument(),

@@ -96,8 +96,8 @@
           <input [type]="field.type"
           [placeholder]="field.placeholder"
           [required]='field.formControl'
-          [name]='field.name'
           [pattern]='field.pattern'>
+          <label>{{field.name}}</label>
           </div>
           <div>
               <button (click)="deleteField(field)">DELETE</button>

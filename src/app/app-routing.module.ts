@@ -18,6 +18,13 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: 'form-details',
+        loadChildren: () =>
+          import('src/modules/form-details/form-details.module').then(
+            (m) => m.FormDetailsModule
+          ),
+      },
+      {
         path: 'products',
         loadChildren: () =>
           import('src/modules/products/products.module').then(
