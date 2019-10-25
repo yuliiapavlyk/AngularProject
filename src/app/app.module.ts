@@ -35,7 +35,6 @@ import { FormsEffect } from 'src/store/effects/form.effects';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    //StoreModule.forRoot(formReducer),
     StoreModule.forFeature('forms', formReducer),
     EffectsModule.forFeature([FormsEffect]),
     StoreModule.forRoot({}),

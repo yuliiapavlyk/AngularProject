@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userServ: UserService, private router: Router) { }
+  constructor(private userServ: UserService, private router: Router,  private toastr: ToastrService) { }
   type = 'password';
   show = false;
   error: string;
@@ -30,10 +31,12 @@ export class LoginComponent implements OnInit {
       password: value.password}).subscribe(
         res => {
           localStorage.setItem('accessToken', res.accessToken);
+          this.toastr.success("Welcome!");
           this.router.navigate(['/my-forms']);
         },
         err => {
           this.error = err.message;
+          this.toastr.error(`${this.error}`);
         }
         );
       }
